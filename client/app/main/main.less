@@ -7,11 +7,15 @@
   align-items: stretch;
   justify-content: space-between;
 
-//  background: lightgoldenrodyellow;
+  background: lightgoldenrodyellow;
 }
 
-#my-navbar, #banner, #footer {
+#my-navbar-wrapper, #banner, #footer {
   flex: 0 0 auto;
+}
+
+#my-navbar {
+  background: lightgoldenrodyellow !important;
 }
 
 ///////////////////////////////////
@@ -52,8 +56,6 @@
   flex-flow: column nowrap;
   align-items: stretch;
   justify-content: flex-start;
-
-  background: lightgoldenrodyellow;
 }
 
 #animal-table-action-bar {
@@ -63,4 +65,10 @@
 #animal-table {
   flex: 1 0 300px;
   min-height: 300px;
+}
+
+#animal-search-input {
+  display: inline-block;
+  width: 100%;
+  max-width: 40rem;
 }

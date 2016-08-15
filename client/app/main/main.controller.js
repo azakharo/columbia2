@@ -40,6 +40,16 @@ angular.module('columbia2App')
     // ui-grid setup
     //-----------------------------------
 
+    $scope.onAddBtnClick = function () {
+      log('add button clicked');
+    };
+    $scope.onEditBtnClick = function () {
+      log('edit button clicked');
+    };
+    $scope.onDelBtnClick = function () {
+      log('del button clicked');
+    };
+
     function genGuid() {
       return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
         var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);

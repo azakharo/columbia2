@@ -1,13 +1,27 @@
 #page-wrapper.w100.vh100
-  #my-navbar(ng-include='"components/navbar/navbar.html"')
+  #my-navbar-wrapper(ng-include='"components/navbar/navbar.html"')
 
   header#banner.hero-unit
     h1 Автоматизация животноводства
     p.lead Новые технологии для повышения эффективности!
     img.banner-img(src='assets/images/pig.png', alt='I\'m Yeoman')
 
-  #page-content.p1
-    #animal-table-action-bar Here will be buttons
+  #page-content.ptb1.plr3
+    #animal-table-action-bar.pb1
+      // Add button
+      button.btn.btn-success.mr1(ng-click="onAddBtnClick()"
+      uib-tooltip="Добавить", tooltip-append-to-body="true", tooltip-placement="auto bottom")
+        i.glyphicon.glyphicon-plus
+      // Edit button
+      button.btn.btn-defaul.mr1(ng-click="onEditBtnClick()"
+      uib-tooltip="Редактировать", tooltip-append-to-body="true", tooltip-placement="auto bottom")
+        i.glyphicon.glyphicon-pencil
+      // Del button
+      button.btn.btn-danger.mr3(ng-click="onDelBtnClick()"
+      uib-tooltip="Удалить", tooltip-append-to-body="true", tooltip-placement="auto bottom")
+        i.glyphicon.glyphicon-minus
+      // Search Input
+      input#animal-search-input.form-control(type='text', name='search', placeholder='Search...')
     #animal-table.w100(ui-grid="gridOptions", ui-grid-auto-resize)
 
   footer#footer.text-center Copyright &copy; 2015-2016 &mdash;&nbsp;

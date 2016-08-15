@@ -1,0 +1,15 @@
+'use strict';
+
+
+///////////////////////////////////////////////////////////
+// Log utils
+
+function log(msg) {
+  console.log(msg);
+}
+function logData(data) {
+  log(JSON.stringify(data, null, 2));
+}
+
+// Log utils
+///////////////////////////////////////////////////////////
