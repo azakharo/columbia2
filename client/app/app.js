@@ -59,4 +59,7 @@ angular.module('columbia2App', [
   .run(function (i18nService) {
     // ui-grid
     i18nService.setCurrentLang('ru');
+
+    // moment js
+    moment.locale('ru');
   });
