@@ -6,7 +6,8 @@ angular.module('columbia2App', [
   'ngSanitize',
   'btford.socket-io',
   'ui.router',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'ui.grid'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
@@ -52,4 +53,9 @@ angular.module('columbia2App', [
         }
       });
     });
+  })
+
+  .run(function (i18nService) {
+    // ui-grid
+    i18nService.setCurrentLang('ru');
   });

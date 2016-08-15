@@ -7,27 +7,9 @@ header#banner.hero-unit
     img(src='assets/images/yeoman.png', alt='I\'m Yeoman')
 
 .container
-  .row
-    .col-lg-12
-      h1.page-header Features:
-      ul.nav.nav-tabs.nav-stacked.col-md-4.col-lg-4.col-sm-6(ng-repeat='thing in awesomeThings')
-        li
-          a(href='#', tooltip='{{thing.info}}')
-            | {{thing.name}}
-            button.close(type='button', ng-click='deleteThing(thing)') ×
+  .myGrid(ui-grid="{ data: myData }")
 
-  form.thing-form
-    label Syncs in realtime across clients
-    p.input-group
-      input.form-control(type='text', placeholder='Add a new thing here.', ng-model='newThing')
-      span.input-group-btn
-        button.btn.btn-primary(type='submit', ng-click='addThing()') Add New
-
-footer.footer
-  .container
-    p
-      | Angular Fullstack v2.1.1
-      = ' | '
-      a(href='https://twitter.com/tyhenkel') @tyhenkel
-      = ' | '
-      a(href='https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open') Issues
+footer#footer.text-center Copyright &copy; 2015-2016 &mdash;&nbsp;
+  a(href="http://sarov-itc.ru/" target="_blank") ИТЦ "Система-Саров"
+  span ,&nbsp;&nbsp;
+  a(href="https://www.me-so.ru/" target="_blank") ДЦ "Микрон"
