@@ -46,11 +46,21 @@
 ///////////////////////////////////
 
 #page-content {
-  flex: 1 1 400px;
+  flex: 1 0 400px;
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+
+  background: lightgoldenrodyellow;
 }
 
-.myGrid {
-  width: 600px;
-  height: 400px;
-  margin: 0 auto;
+#animal-table-action-bar {
+  flex: 0 0 auto;
+}
+
+#animal-table {
+  flex: 1 0 300px;
+  min-height: 300px;
 }

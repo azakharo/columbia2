@@ -1,31 +1,30 @@
 'use strict';
 
 angular.module('columbia2App')
-  .controller('MainCtrl', function ($scope, $http, socket) {
-    $scope.awesomeThings = [];
+  .controller('MainCtrl', function ($scope, uiGridConstants) {
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-      socket.syncUpdates('thing', $scope.awesomeThings);
-    });
+    //-----------------------------------
+    // ui-grid setup
 
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
-        return;
-      }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
-    };
+    $scope.gridOptions = {};
+    //$scope.gridOptions.columnDefs = [
+    //  {
+    //    displayName: 'Приложение',
+    //    field: 'app.title'
+    //  },
+    //  {
+    //    displayName: 'Акцептант',
+    //    field: 'title'
+    //  },
+    //  {
+    //    displayName: 'Описание',
+    //    field: 'description'
+    //  }
+    //];
 
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
-    };
-
-    $scope.$on('$destroy', function () {
-      socket.unsyncUpdates('thing');
-    });
-
-    $scope.myData = [
+    $scope.gridOptions.enableHorizontalScrollbar = uiGridConstants.scrollbars.NEVER;
+    $scope.gridOptions.enableVerticalScrollbar = uiGridConstants.scrollbars.WHEN_NEEDED;
+    let myData = [
       {
         "firstName": "Cox",
         "lastName": "Carney",
@@ -45,5 +44,9 @@ angular.module('columbia2App')
         "employed": false
       }
     ];
+    $scope.gridOptions.data = myData;
+
+    // ui-grid setup
+    //-----------------------------------
 
   });

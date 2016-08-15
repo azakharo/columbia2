@@ -7,7 +7,8 @@ angular.module('columbia2App', [
   'btford.socket-io',
   'ui.router',
   'ui.bootstrap',
-  'ui.grid'
+  'ui.grid',
+  'ui.grid.autoResize'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
