@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('columbia2App')
-  .controller('MainCtrl', function ($scope, $http, socket, uiGridConstants) {
+  .controller('MainCtrl', function ($scope, $http, socket, uiGridConstants, Modal) {
 
     //-----------------------------------
     // ui-grid setup
@@ -104,7 +104,10 @@ angular.module('columbia2App')
 
     $scope.onDelBtnClick = function (cow) {
       if (cow) {
-        $http.delete('/api/things/' + cow._id);
+        let openConfirmFunc = Modal.confirm.delete(
+          () => $http.delete('/api/things/' + cow._id)
+        );
+        openConfirmFunc(`animal with id ${cow.ID}`);
       }
     };
 
