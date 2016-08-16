@@ -1,32 +1,7 @@
 'use strict';
 
 angular.module('columbia2App')
-  .controller('MainCtrl', function ($scope, uiGridConstants) {
-
-    const SEX = ['M', 'F'];
-    const PORODY = ['meet', 'milk'];
-    const CHIP_LOCATIONS = ['back', 'stomach', 'head'];
-    const HAIRS = ['black', 'white', 'black-white'];
-    const SPEC_CHARS = [undefined, 'eye missing', 'tail missing'];
-    const REPRODUCTION_CHOICES = [undefined, 'sterilized'];
-    const GROUPS = ['inseminated', 'young', 'worker', 'quarantine'];
-    let animals = _.times(100, function() {
-      const birthday = moment().subtract(_.random(1000), 'days');
-      return {
-        ID: genGuid(),
-        owner: 'Anton Subbotin',
-        birthday: birthday,
-        sex: _.sample(SEX),
-        poroda: _.sample(PORODY),
-        motherID: genGuid(),
-        chipDate: moment(birthday).add(1, 'days'),
-        chipLocation: _.sample(CHIP_LOCATIONS),
-        hair: _.sample(HAIRS),
-        specialCharacteristics: _.sample(SPEC_CHARS),
-        reproduction: _.sample(REPRODUCTION_CHOICES),
-        group: _.sample(GROUPS)
-      }
-    });
+  .controller('MainCtrl', function ($scope, $http, socket, uiGridConstants) {
 
     //-----------------------------------
     // ui-grid setup
@@ -34,26 +9,42 @@ angular.module('columbia2App')
     $scope.gridOptions = {};
     $scope.gridOptions.enableHorizontalScrollbar = uiGridConstants.scrollbars.NEVER;
     $scope.gridOptions.enableVerticalScrollbar = uiGridConstants.scrollbars.WHEN_NEEDED;
-    $scope.gridOptions.data = animals;
 
     // ui-grid setup
     //-----------------------------------
 
+
+    //////////////////////////////////////////////////////////////////////
+    // Operations with cows on server
+
+    $http.get('/api/things').success(function (awesomeThings) {
+      $scope.gridOptions.data = awesomeThings;
+      socket.syncUpdates('thing', $scope.gridOptions.data);
+    });
+
     $scope.onAddBtnClick = function () {
       log('add button clicked');
+      if (!$scope.newCow) {
+        return;
+      }
+      $http.post('/api/things', newCow);
+      $scope.newCow = null;
     };
+
+    $scope.onDelBtnClick = function () {
+      log('del button clicked');
+      //$http.delete('/api/things/' + thing._id);
+    };
+
     $scope.onEditBtnClick = function () {
       log('edit button clicked');
     };
-    $scope.onDelBtnClick = function () {
-      log('del button clicked');
-    };
 
-    function genGuid() {
-      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
-        return v.toString(16);
-      });
-    }
+    $scope.$on('$destroy', function () {
+      socket.unsyncUpdates('thing');
+    });
+
+    // Operations with cows on server
+    //////////////////////////////////////////////////////////////////////
 
   });
