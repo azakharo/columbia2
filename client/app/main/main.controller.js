@@ -102,9 +102,10 @@ angular.module('columbia2App')
       $scope.newCow = null;
     };
 
-    $scope.onDelBtnClick = function () {
-      log('del button clicked');
-      //$http.delete('/api/things/' + thing._id);
+    $scope.onDelBtnClick = function (cow) {
+      if (cow) {
+        $http.delete('/api/things/' + cow._id);
+      }
     };
 
     $scope.onEditBtnClick = function () {
