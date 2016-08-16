@@ -8,5 +8,5 @@ module.exports = {
     uri: 'mongodb://localhost/columbia2-dev'
   },
 
-  seedDB: true
+  seedDB: false
 };
