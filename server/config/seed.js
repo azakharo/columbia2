@@ -5,31 +5,40 @@
 
 'use strict';
 
+var _ = require('lodash');
+var moment = require('moment');
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
+var cow = require('../api/thing/cow');
 
+// Create cows
 Thing.find({}).remove(function() {
-  Thing.create({
-    name : 'Development Tools',
-    info : 'Integration with popular tools such as Bower, Grunt, Karma, Mocha, JSHint, Node Inspector, Livereload, Protractor, Jade, Stylus, Sass, CoffeeScript, and Less.'
-  }, {
-    name : 'Server and Client integration',
-    info : 'Built with a powerful and fun stack: MongoDB, Express, AngularJS, and Node.'
-  }, {
-    name : 'Smart Build System',
-    info : 'Build system ignores `spec` files, allowing you to keep tests alongside code. Automatic injection of scripts and styles into your index.html'
-  },  {
-    name : 'Modular Structure',
-    info : 'Best practice client and server structures allow for more code reusability and maximum scalability'
-  },  {
-    name : 'Optimized Build',
-    info : 'Build process packs up your templates as a single JavaScript payload, minifies your scripts/css/images, and rewrites asset names for caching.'
-  },{
-    name : 'Deployment Ready',
-    info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
+
+  let animals = _.times(100, function() {
+    const birthday = moment().subtract(_.random(1000), 'days');
+    return {
+      ID: genGuid(),
+      owner: 'Anton Subbotin',
+      birthday: birthday.toDate(),
+      sex: _.sample(cow.SEX),
+      poroda: _.sample(cow.PORODY),
+      motherID: genGuid(),
+      chipDate: moment(birthday).add(1, 'days').toDate(),
+      chipLocation: _.sample(cow.CHIP_LOCATIONS),
+      hair: _.sample(cow.HAIRS),
+      specialCharacteristics: _.sample(cow.SPEC_CHARS),
+      reproduction: _.sample(cow.REPRODUCTION_CHOICES),
+      group: _.sample(cow.GROUPS)
+    }
+  });
+
+  _.forEach(animals, function (c) {
+    Thing.create(c);
   });
 });
 
+
+// Create users
 User.find({}).remove(function() {
   User.create({
     provider: 'local',
@@ -47,3 +56,11 @@ User.find({}).remove(function() {
     }
   );
 });
+
+
+function genGuid() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+    return v.toString(16);
+  });
+}
