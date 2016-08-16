@@ -61,6 +61,25 @@ angular.module('columbia2App')
 
     $scope.gridOptions.enableHorizontalScrollbar = uiGridConstants.scrollbars.NEVER;
     $scope.gridOptions.enableVerticalScrollbar = uiGridConstants.scrollbars.WHEN_NEEDED;
+    // Selection
+    $scope.gridOptions.enableRowSelection = true;
+    $scope.gridOptions.enableRowHeaderSelection = false;
+    $scope.gridOptions.multiSelect = false;
+    $scope.gridOptions.modifierKeysToMultiSelect = false;
+    $scope.gridOptions.noUnselect = false;
+    $scope.gridOptions.onRegisterApi = function( gridApi ) {
+      $scope.gridApi = gridApi;
+      gridApi.selection.on.rowSelectionChanged($scope, onSelectionChanged);
+    };
+    $scope.selectedCow = null;
+    function onSelectionChanged(row){
+      if (row.isSelected) {
+        $scope.selectedCow = row.entity;
+      }
+      else {
+        $scope.selectedCow = null;
+      }
+    }
 
     // ui-grid setup
     //-----------------------------------
