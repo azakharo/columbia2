@@ -4,13 +4,12 @@ angular.module('columbia2App')
   .controller('MainCtrl', function ($scope, uiGridConstants) {
 
     const SEX = ['M', 'F'];
-    const PORODY = ['мясная', 'молочная'];
-    const CHIP_LOCATIONS = ['спина', 'живот', 'голова',
-      'левая передняя нога', 'левая задняя нога', 'правая передняя нога', 'правая задняя нога'];
-    const HAIRS = ['черный', 'белый', 'черно-белый'];
-    const SPEC_CHARS = [undefined, 'хромает на 1 лапу', 'отсутствует глаз', 'отсутствует хвост'];
-    const REPRODUCTION_CHOICES = [undefined, 'кастрация/стерилизация'];
-    const GROUPS = ['осемененные', 'молодняк', 'рабочие', 'карантинные'];
+    const PORODY = ['meet', 'milk'];
+    const CHIP_LOCATIONS = ['back', 'stomach', 'head'];
+    const HAIRS = ['black', 'white', 'black-white'];
+    const SPEC_CHARS = [undefined, 'eye missing', 'tail missing'];
+    const REPRODUCTION_CHOICES = [undefined, 'sterilized'];
+    const GROUPS = ['inseminated', 'young', 'worker', 'quarantine'];
     let animals = _.times(100, function() {
       const birthday = moment().subtract(_.random(1000), 'days');
       return {
