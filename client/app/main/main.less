@@ -58,17 +58,33 @@
   justify-content: flex-start;
 }
 
-#animal-table-action-bar {
+#animal-table-top-bar, #animal-table-bottom-bar {
+  flex: 0 0 auto;
+}
+
+#animal-table-top-bar {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+#animal-page-title {
+  flex: 1;
+}
+
+#animal-search-input {
+  flex: 0 0 auto;
+  display: inline-block;
+  width: 100%;
+  max-width: 40rem;
+}
+
+#animal-settings-btn {
   flex: 0 0 auto;
 }
 
 #animal-table {
   flex: 1 0 300px;
   min-height: 300px;
-}
-
-#animal-search-input {
-  display: inline-block;
-  width: 100%;
-  max-width: 40rem;
 }

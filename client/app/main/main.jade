@@ -7,22 +7,26 @@
   //  img.banner-img(src='assets/images/pig.png', alt='I\'m Yeoman')
 
   #page-content.ptb1.plr3
-    #animal-table-action-bar.pb1
+    #animal-table-top-bar.pb1
+      // Title
+      #animal-page-title.text-xlarge.bold Animals
+      // Search Input
+      input#animal-search-input.form-control.mlr1(type='text', name='search', placeholder='Search...')
+      // Settings button
+      button.btn.btn-default#animal-settings-btn(disabled,
+      uib-tooltip="Настройки", tooltip-append-to-body="true", tooltip-placement="auto bottom")
+        i.glyphicon.glyphicon-cog
+    #animal-table.w100(ui-grid="gridOptions", ui-grid-auto-resize)
+    #animal-table-bottom-bar.ptb1
       // Add button
       button.btn.btn-success.mr1(ng-click="onAddBtnClick()"
-      uib-tooltip="Добавить", tooltip-append-to-body="true", tooltip-placement="auto bottom")
-        i.glyphicon.glyphicon-plus
+      uib-tooltip="Добавить", tooltip-append-to-body="true", tooltip-placement="auto bottom") Добавить...
       // Edit button
       button.btn.btn-defaul.mr1(ng-click="onEditBtnClick()"
-      uib-tooltip="Редактировать", tooltip-append-to-body="true", tooltip-placement="auto bottom")
-        i.glyphicon.glyphicon-pencil
+      uib-tooltip="Изменить", tooltip-append-to-body="true", tooltip-placement="auto bottom") Изменить...
       // Del button
       button.btn.btn-danger.mr3(ng-click="onDelBtnClick()"
-      uib-tooltip="Удалить", tooltip-append-to-body="true", tooltip-placement="auto bottom")
-        i.glyphicon.glyphicon-minus
-      // Search Input
-      input#animal-search-input.form-control(type='text', name='search', placeholder='Search...')
-    #animal-table.w100(ui-grid="gridOptions", ui-grid-auto-resize)
+      uib-tooltip="Удалить", tooltip-append-to-body="true", tooltip-placement="auto bottom") Удалить...
 
   //footer#footer.text-center Copyright &copy; 2015-2016 &mdash;&nbsp;
   //  a(href="http://sarov-itc.ru/" target="_blank") ИТЦ "Система-Саров"
