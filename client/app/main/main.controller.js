@@ -7,6 +7,58 @@ angular.module('columbia2App')
     // ui-grid setup
 
     $scope.gridOptions = {};
+
+    $scope.gridOptions.columnDefs = [
+      {
+        displayName: 'Id',
+        field: 'ID'
+      },
+      {
+        displayName: 'Owner',
+        field: 'owner'
+      },
+      {
+        displayName: 'Birthday',
+        field: 'birthday',
+        type: 'date',
+        cellFilter: 'date: "yyyy-MM-dd"'
+      },
+      {
+        displayName: 'Sex',
+        field: 'sex'
+      },
+      {
+        displayName: 'Type',
+        field: 'poroda'
+      },
+      {
+        displayName: 'Chipped',
+        field: 'chipDate',
+        type: 'date',
+        cellFilter: 'date: "yyyy-MM-dd"'
+      },
+      {
+        displayName: 'Chip Location',
+        field: 'chipLocation'
+      },
+      {
+        displayName: 'Wool',
+        field: 'hair'
+      },
+      {
+        displayName: 'Notes',
+        field: 'specialCharacteristics'
+      },
+      {
+        displayName: 'Reproduction',
+        field: 'reproduction'
+      },
+      {
+        displayName: 'Group',
+        field: 'group'
+      }
+    ];
+
     $scope.gridOptions.enableHorizontalScrollbar = uiGridConstants.scrollbars.NEVER;
     $scope.gridOptions.enableVerticalScrollbar = uiGridConstants.scrollbars.WHEN_NEEDED;
 
