@@ -14,7 +14,7 @@
           // Date picker
           p.input-group
             // input
-            input.form-control(type='text',
+            input.form-control.bold(type='text',
             uib-datepicker-popup='{{dateFormat}}', ng-model='animal.birthday',
             is-open='isBirthdayPickerOpened', datepicker-options='dateOptions', max-date='today',
             alt-input-formats="altInputFormats")
@@ -25,7 +25,7 @@
     .dlg-col2
       .dlg-field-container
         .dlg-field-name Age (full years):
-        .dlg-field-value {{ getFullYearsFrom(animal.birthday) }}
+        .dlg-field-value.bold {{ getFullYearsFrom(animal.birthday) }}
   .dlg-row
     .dlg-col1
       .dlg-field-container
@@ -33,7 +33,7 @@
         .dlg-field-value-overflow
           ui-select(ng-model='animal.sex')
             ui-select-match
-              span(ng-bind='$select.selected')
+              span.bold(ng-bind='$select.selected')
             ui-select-choices(repeat='s in SEX_CHOICES')
               span(ng-bind='s')
     .dlg-col2
@@ -42,7 +42,7 @@
         .dlg-field-value-overflow
           ui-select(ng-model='animal.poroda')
             ui-select-match
-              span(ng-bind='$select.selected')
+              span.bold(ng-bind='$select.selected')
             ui-select-choices(repeat='p in PORODY')
               span(ng-bind='p')
   .dlg-row
@@ -50,12 +50,12 @@
       .dlg-field-container
         .dlg-field-name Mother:
         .dlg-field-value
-          input.form-control(type='text', ng-model='animal.motherID')
+          input.form-control.bold(type='text', ng-model='animal.motherID')
     .dlg-col2
       .dlg-field-container
         .dlg-field-name Father:
         .dlg-field-value
-          input.form-control(type='text', ng-model='animal.fatherID')
+          input.form-control.bold(type='text', ng-model='animal.fatherID')
   hr
   .dlg-row
     .dlg-col1
@@ -64,7 +64,7 @@
         .dlg-field-value-overflow
           ui-select(ng-model='animal.reproduction')
             ui-select-match
-              span(ng-bind='$select.selected')
+              span.bold(ng-bind='$select.selected')
             ui-select-choices(repeat='r in REPRODUCTION_CHOICES')
               span(ng-bind='r')
     .dlg-col2
@@ -73,7 +73,7 @@
         .dlg-field-value-overflow
           ui-select(ng-model='animal.group')
             ui-select-match
-              span(ng-bind='$select.selected')
+              span.bold(ng-bind='$select.selected')
             ui-select-choices(repeat='g in GROUPS')
               span(ng-bind='g')
 .modal-footer
