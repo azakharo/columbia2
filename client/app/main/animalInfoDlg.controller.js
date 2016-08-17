@@ -30,4 +30,6 @@ angular.module('columbia2App')
     // Date picker
     //===================================
 
+    $scope.SEX_CHOICES = SEX;
+
   });

@@ -27,7 +27,12 @@
           alt-input-formats="altInputFormats")
       .dlg-field-container
         .dlg-field-name Sex:
-        .dlg-field-value {{ animal.sex }}
+        .dlg-field-value-overflow
+          ui-select(ng-model='animal.sex')
+            ui-select-match
+              span(ng-bind='$select.selected')
+            ui-select-choices(repeat='s in SEX_CHOICES')
+              span(ng-bind='s')
       .dlg-field-container
         .dlg-field-name Mother:
         .dlg-field-value неизвестна
