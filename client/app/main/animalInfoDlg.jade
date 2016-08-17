@@ -3,6 +3,10 @@
   h3.modal-title Паспорт животного
 .modal-body
   // Common info section
+  .dlg-field-container.pb1
+    .Grid-cell--autoSize.pr1 ID:
+    .Grid-cell
+      input.form-control(type='text', ng-model="animal.ID")
   .Grid.mb1
     // Common info left part
     .Grid-cell.pr3
@@ -29,5 +33,5 @@
 .modal-footer
   .Grid.Grid--justifyCenter
     .Grid-cell--autoSize
-      button.btn.btn-primary.float-left(type='button', ng-click='onOk()') OK
-      button.btn.btn-danger.float-left(type='button', ng-click='onCancel()') Cancel
+      button.btn.btn-primary(type='button', ng-click='onOk()') OK
+      button.btn.btn-danger(type='button', ng-click='onCancel()') Cancel
