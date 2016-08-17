@@ -10,19 +10,18 @@
     .dlg-col1
       .dlg-field-container
         .dlg-field-name Birthday:
-        .dlg-field-value
+        .dlg-field-value-overflow
           // Date picker
-          // text repr of date
-          span.mr1 {{ animal.birthday | date:'yyyy-MM-dd' }}
-          // button
-          button#animal-dlg-birthday-datepicker-btn.btn.btn-default(type='button',
-          ng-click='isBirthdayPickerOpened = true')
-            i.glyphicon.glyphicon-calendar
-          // hidden input
-          input#animal-dlg-birthday-datepicker-input(type='text',
-          uib-datepicker-popup='{{dateFormat}}', ng-model='animal.birthday',
-          is-open='isBirthdayPickerOpened', datepicker-options='dateOptions', max-date='today',
-          alt-input-formats="altInputFormats")
+          p.input-group
+            // input
+            input.form-control(type='text',
+            uib-datepicker-popup='{{dateFormat}}', ng-model='animal.birthday',
+            is-open='isBirthdayPickerOpened', datepicker-options='dateOptions', max-date='today',
+            alt-input-formats="altInputFormats")
+            // button
+            span.input-group-btn
+              button.btn.btn-default(type='button', ng-click='isBirthdayPickerOpened = true')
+                i.glyphicon.glyphicon-calendar
     .dlg-col2
       .dlg-field-container
         .dlg-field-name Age:
