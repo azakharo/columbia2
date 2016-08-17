@@ -35,6 +35,7 @@ angular.module('columbia2App')
     // Choices
     $scope.SEX_CHOICES = SEX;
     $scope.PORODY = PORODY;
+    $scope.REPRODUCTION_CHOICES = REPRODUCTION_CHOICES;
 
     $scope.getFullYearsFrom = function (date) {
       return moment().diff(moment(date), 'years');
