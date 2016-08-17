@@ -112,8 +112,6 @@ angular.module('columbia2App')
     };
 
     $scope.onEditBtnClick = function () {
-      //log('edit button clicked');
-
       var modalInstance = $uibModal.open({
         templateUrl: 'app/main/animalInfoDlg.html',
         controller: 'animalInfoDlgCtrl',
@@ -126,12 +124,9 @@ angular.module('columbia2App')
       });
 
       modalInstance.result.then(function (cow) {
-        //log('OK button clicked');
-        log(cow);
-        //log($scope.selectedCow == cow);
-        // TODO make PUT
-      }, function (reason) {
-        //log('Modal dismissed, reason: ' + reason);
+        //log($scope.selectedCow);
+        //log(cow);
+        $http.put('/api/things/' + $scope.selectedCow._id, cow);
       });
 
     };
