@@ -12,7 +12,19 @@
     .Grid-cell.pr3
       .dlg-field-container
         .dlg-field-name Дата рождения:
-        .dlg-field-value 17 августа
+        .dlg-field-value
+          // Date picker
+          // text repr of date
+          span.mr1 {{ animal.birthday | date:'yyyy-MM-dd' }}
+          // button
+          button#animal-dlg-birthday-datepicker-btn.btn.btn-default(type='button',
+          ng-click='isBirthdayPickerOpened = true')
+            i.glyphicon.glyphicon-calendar
+          // hidden input
+          input#animal-dlg-birthday-datepicker-input(type='text',
+          uib-datepicker-popup='{{dateFormat}}', ng-model='animal.birthday',
+          is-open='isBirthdayPickerOpened', datepicker-options='dateOptions', max-date='today',
+          alt-input-formats="altInputFormats")
       .dlg-field-container
         .dlg-field-name Пол:
         .dlg-field-value {{ animal.sex }}

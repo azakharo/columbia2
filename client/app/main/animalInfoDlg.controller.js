@@ -13,4 +13,21 @@ angular.module('columbia2App')
       $uibModalInstance.dismiss('cancel');
     };
 
+    //===================================
+    // Date picker
+
+    $scope.today = moment().toDate();
+
+    $scope.dateOptions = {
+      formatYear: 'yy',
+      startingDay: 1,
+      showWeeks: false
+    };
+
+    $scope.dateFormat = 'dd.MM.yyyy';
+    $scope.altInputFormats = ['d!.M!.yyyy'];
+
+    // Date picker
+    //===================================
+
   });
