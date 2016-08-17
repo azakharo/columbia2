@@ -39,7 +39,13 @@
     .dlg-col2
       .dlg-field-container
         .dlg-field-name Type:
-        .dlg-field-value молочная
+        .dlg-field-value-overflow
+          ui-select(ng-model='animal.poroda')
+            ui-select-match
+              span(ng-bind='$select.selected')
+            ui-select-choices(repeat='p in PORODY')
+              span(ng-bind='p')
+
 
 
       //.dlg-field-container

@@ -32,7 +32,9 @@ angular.module('columbia2App')
     // Date picker
     //===================================
 
+    // Choices
     $scope.SEX_CHOICES = SEX;
+    $scope.PORODY = PORODY;
 
     $scope.getFullYearsFrom = function (date) {
       return moment().diff(moment(date), 'years');
