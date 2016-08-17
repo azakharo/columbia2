@@ -6,4 +6,4 @@ exports.CHIP_LOCATIONS = ['back', 'stomach', 'head'];
 exports.HAIRS = ['black', 'white', 'black-white'];
 exports.SPEC_CHARS = [undefined, 'eye missing', 'tail missing'];
 exports.REPRODUCTION_CHOICES = ['unsterilized', 'sterilized'];
-exports.GROUPS = ['inseminated', 'young', 'worker', 'quarantine'];
+exports.GROUPS = ['коровы', 'нетели', 'телки до двух лет', 'молодняк'];
