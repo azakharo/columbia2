@@ -1,0 +1,33 @@
+.modal-header
+  button.close(type='button', ng-click='$dismiss()') &times;
+  h3.modal-title Паспорт животного
+.modal-body
+  // Common info section
+  .Grid.mb1
+    // Common info left part
+    .Grid-cell.pr3
+      .dlg-field-container
+        .dlg-field-name Дата рождения:
+        .dlg-field-value 17 августа
+      .dlg-field-container
+        .dlg-field-name Пол:
+        .dlg-field-value {{ animal.sex }}
+      .dlg-field-container
+        .dlg-field-name Мать:
+        .dlg-field-value неизвестна
+    // Common info right part
+    .Grid-cell
+      .dlg-field-container
+        .dlg-field-name Возраст (полных лет):
+        .dlg-field-value 4
+      .dlg-field-container
+        .dlg-field-name Порода:
+        .dlg-field-value молочная
+      .dlg-field-container
+        .dlg-field-name Отец:
+        .dlg-field-value оставил семью
+.modal-footer
+  .Grid.Grid--justifyCenter
+    .Grid-cell--autoSize
+      button.btn.btn-primary.float-left(type='button', ng-click='onOk()') OK
+      button.btn.btn-danger.float-left(type='button', ng-click='onCancel()') Cancel

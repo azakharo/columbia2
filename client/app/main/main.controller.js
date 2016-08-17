@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('columbia2App')
-  .controller('MainCtrl', function ($scope, $http, socket, uiGridConstants, Modal) {
+  .controller('MainCtrl', function ($scope, $http, $uibModal, socket, uiGridConstants, Modal) {
 
     //-----------------------------------
     // ui-grid setup
@@ -113,6 +113,27 @@ angular.module('columbia2App')
 
     $scope.onEditBtnClick = function () {
       log('edit button clicked');
+
+      var modalInstance = $uibModal.open({
+        templateUrl: 'app/main/animalInfoDlg.html',
+        controller: 'animalInfoDlgCtrl',
+        size: 'lg',
+        resolve: {
+          animal: function () {
+            return $scope.selectedCow;
+          }
+        }
+      });
+
+      modalInstance.result.then(function (cow) {
+        log('OK button clicked');
+        //log(cow);
+        //log($scope.selectedCow == cow);
+        // TODO make PUT
+      }, function (reason) {
+        log('Modal dismissed, reason: ' + reason);
+      });
+
     };
 
     $scope.$on('$destroy', function () {
