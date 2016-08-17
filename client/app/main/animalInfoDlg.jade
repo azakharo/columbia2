@@ -2,14 +2,12 @@
   button.close(type='button', ng-click='$dismiss()') &times;
   h3.modal-title Паспорт животного
 .modal-body
-  // Common info section
   .dlg-field-container.pb1
     .Grid-cell--autoSize.pr1 ID:
     .Grid-cell
       input.form-control(type='text', ng-model="animal.ID")
-  .Grid.mb1
-    // Common info left part
-    .Grid-cell.pr3
+  .dlg-row
+    .dlg-col1
       .dlg-field-container
         .dlg-field-name Birthday:
         .dlg-field-value
@@ -25,6 +23,12 @@
           uib-datepicker-popup='{{dateFormat}}', ng-model='animal.birthday',
           is-open='isBirthdayPickerOpened', datepicker-options='dateOptions', max-date='today',
           alt-input-formats="altInputFormats")
+    .dlg-col2
+      .dlg-field-container
+        .dlg-field-name Age:
+        .dlg-field-value 4
+  .dlg-row
+    .dlg-col1
       .dlg-field-container
         .dlg-field-name Sex:
         .dlg-field-value-overflow
@@ -33,20 +37,20 @@
               span(ng-bind='$select.selected')
             ui-select-choices(repeat='s in SEX_CHOICES')
               span(ng-bind='s')
-      .dlg-field-container
-        .dlg-field-name Mother:
-        .dlg-field-value неизвестна
-    // Common info right part
-    .Grid-cell
-      .dlg-field-container
-        .dlg-field-name Age:
-        .dlg-field-value 4
+    .dlg-col2
       .dlg-field-container
         .dlg-field-name Type:
         .dlg-field-value молочная
-      .dlg-field-container
-        .dlg-field-name Father:
-        .dlg-field-value оставил семью
+
+
+      //.dlg-field-container
+      //  .dlg-field-name Mother:
+      //  .dlg-field-value неизвестна
+    // Common info right part
+    //.Grid-cell
+    //  .dlg-field-container
+    //    .dlg-field-name Father:
+    //    .dlg-field-value оставил семью
 .modal-footer
   .Grid.Grid--justifyCenter
     .Grid-cell--autoSize
