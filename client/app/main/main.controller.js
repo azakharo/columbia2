@@ -66,7 +66,7 @@ angular.module('columbia2App')
     $scope.gridOptions.enableRowHeaderSelection = false;
     $scope.gridOptions.multiSelect = false;
     $scope.gridOptions.modifierKeysToMultiSelect = false;
-    $scope.gridOptions.noUnselect = false;
+    $scope.gridOptions.noUnselect = true;
     $scope.gridOptions.onRegisterApi = function( gridApi ) {
       $scope.gridApi = gridApi;
       gridApi.selection.on.rowSelectionChanged($scope, onSelectionChanged);
@@ -80,6 +80,19 @@ angular.module('columbia2App')
         $scope.selectedCow = null;
       }
     }
+    // Double-click handling
+    $scope.gridOptions.rowTemplate = `<div
+    ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.uid"
+    ui-grid-one-bind-id-grid="rowRenderIndex + '-' + col.uid + '-cell'"
+    class="ui-grid-cell"
+    ng-class="{ 'ui-grid-row-header-cell': col.isRowHeader }"
+    role="{{col.isRowHeader ? 'rowheader' : 'gridcell'}}"
+    ng-dblclick="grid.appScope.onDblClick(row.entity)"
+    ui-grid-cell>
+    </div>`;
+    $scope.onDblClick = function (cow) {
+      $scope.onEditBtnClick();
+    };
 
     // ui-grid setup
     //-----------------------------------
