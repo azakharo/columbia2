@@ -5,7 +5,7 @@ var moment = require('moment');
 
 
 const SEX = ['M', 'F'];
-const PORODY = ['meet', 'milk'];
+const PORODY = ['meat', 'milk'];
 const CHIP_LOCATIONS = ['back', 'stomach', 'head'];
 const HAIRS = ['black', 'white', 'black-white'];
 const SPEC_CHARS = [undefined, 'eye missing', 'tail missing'];
