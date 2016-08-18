@@ -38,6 +38,7 @@ angular.module('columbia2App')
     $scope.REPRODUCTION_CHOICES = REPRODUCTION_CHOICES;
     $scope.GROUPS = GROUPS;
     $scope.HAIRS = HAIRS;
+    $scope.CHIP_LOCATIONS = CHIP_LOCATIONS;
 
     $scope.getFullYearsFrom = function (date) {
       return moment().diff(moment(date), 'years');
