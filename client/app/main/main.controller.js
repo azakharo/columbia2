@@ -75,7 +75,7 @@ angular.module('columbia2App')
     $scope.gridOptions.multiSelect = false;
     $scope.gridOptions.modifierKeysToMultiSelect = false;
     $scope.gridOptions.noUnselect = true;
-    $scope.gridOptions.onRegisterApi = function( gridApi ) {
+    $scope.gridOptions.onRegisterApi = function(gridApi) {
       $scope.gridApi = gridApi;
       gridApi.selection.on.rowSelectionChanged($scope, onSelectionChanged);
 
@@ -236,7 +236,10 @@ angular.module('columbia2App')
     $scope.onDelBtnClick = function (cow) {
       if (cow) {
         let openConfirmFunc = Modal.confirm.delete(
-          () => $http.delete('/api/things/' + cow._id)
+          function () {
+            $http.delete('/api/things/' + cow._id);
+            $scope.selectedCow = null;
+          }
         );
         openConfirmFunc(`animal with id ${cow.ID}`);
       }
