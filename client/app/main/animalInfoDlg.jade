@@ -89,7 +89,7 @@
               span(ng-bind='h')
     .dlg-col2
   .dlg-field-container
-    .dlg-field-name-autosize.pr5 Notes:
+    .dlg-field-name-autosize.pr1 Notes:
     .dlg-field-value
       textarea#special-notes-textarea.bold(ng-model="animal.specialCharacteristics")
   hr
@@ -118,6 +118,10 @@
               span.bold(ng-bind='$select.selected')
             ui-select-choices(repeat='l in CHIP_LOCATIONS')
               span(ng-bind='l')
+  .dlg-field-container
+    .dlg-field-name-autosize.pr1 Owner:
+    .dlg-field-value
+      input.form-control.bold(ng-model="animal.owner")
 .modal-footer
   .Grid.Grid--justifyCenter
     .Grid-cell--autoSize
