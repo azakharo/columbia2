@@ -16,11 +16,17 @@ module.exports = function (grunt) {
     ngtemplates: 'grunt-angular-templates',
     cdnify: 'grunt-google-cdn',
     protractor: 'grunt-protractor-runner',
-    buildcontrol: 'grunt-build-control'
+    buildcontrol: 'grunt-build-control',
+    replace: 'grunt-text-replace'
   });
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
+
+  var replUrlUiGrid = {
+    from: 'url(ui-grid.',
+    to: 'url(/bower_components/angular-ui-grid/ui-grid.'
+  };
 
   // Define the configuration for all the tasks
   grunt.initConfig({
@@ -603,6 +609,17 @@ module.exports = function (grunt) {
         }
       }
     },
+
+    replace: {
+      urlUiGrid: {
+        src: [
+          'dist/public/app/*.css'
+        ],
+        overwrite: true,
+        replacements: [replUrlUiGrid]
+      }
+    }
+
   });
 
   // Used for delaying livereload until after server has restarted
@@ -716,7 +733,8 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'rev',
-    'usemin'
+    'usemin',
+    'replace:urlUiGrid'
   ]);
 
   grunt.registerTask('default', [
