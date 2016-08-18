@@ -1,9 +1,13 @@
 'use strict';
 
 angular.module('columbia2App')
-  .controller('MainCtrl', function ($scope, $http, $uibModal, socket, uiGridConstants, Modal) {
+  .controller('MainCtrl', function ($scope, $http, $uibModal, socket, uiGridConstants, localStorageService, Modal) {
 
-    //-----------------------------------
+    $scope.$on('$destroy', function () {
+      saveGridState();
+    });
+
+    //---------------------------------------------------------------
     // ui-grid setup
 
     $scope.gridOptions = {};
@@ -70,6 +74,16 @@ angular.module('columbia2App')
     $scope.gridOptions.onRegisterApi = function( gridApi ) {
       $scope.gridApi = gridApi;
       gridApi.selection.on.rowSelectionChanged($scope, onSelectionChanged);
+
+      // Save grid state on column position changed
+      gridApi.colMovable.on.columnPositionChanged($scope, function(colDef, originalPosition, newPosition) {
+        saveGridState();
+      });
+
+      // Save grid state on column visibility changed
+      gridApi.core.on.columnVisibilityChanged($scope, function (column) {
+        saveGridState();
+      });
     };
     $scope.selectedCow = null;
     function onSelectionChanged(row){
@@ -94,8 +108,30 @@ angular.module('columbia2App')
       $scope.onEditBtnClick();
     };
 
+    ///////////////////////////////////////////////////////
+    // Grid state save / restore
+
+    const gridStateStorageKey = 'animalGridState';
+
+    function saveGridState() {
+      const gridState = $scope.gridApi.saveState.save();
+      localStorageService.set(gridStateStorageKey, gridState);
+      //log("grid state saved");
+    }
+
+    function restoreGridState() {
+      let gridState = localStorageService.get(gridStateStorageKey);
+      if (gridState) {
+        $scope.gridApi.saveState.restore($scope, gridState);
+        //log("grid state restored");
+      }
+    }
+
+    // Grid state save / restore
+    ///////////////////////////////////////////////////////
+
     // ui-grid setup
-    //-----------------------------------
+    //---------------------------------------------------------------
 
 
     //////////////////////////////////////////////////////////////////////
@@ -104,6 +140,7 @@ angular.module('columbia2App')
     $http.get('/api/things').success(function (awesomeThings) {
       $scope.gridOptions.data = awesomeThings;
       socket.syncUpdates('thing', $scope.gridOptions.data);
+      restoreGridState();
     });
 
     function createDefaultAnimal() {
