@@ -27,10 +27,7 @@ var ThingSchema = new Schema({
     type: String,
     enum : cow.HAIRS
   },
-  specialCharacteristics: {
-    type: String,
-    enum : cow.SPEC_CHARS
-  },
+  specialCharacteristics: String,
   reproduction: {
     type: String,
     enum : cow.REPRODUCTION_CHOICES
