@@ -11,11 +11,14 @@
       // Title
       #animal-page-title.text-xlarge.bold Animals
       // Search Input
-      input#animal-search-input.form-control.mlr1(type='text', name='search', placeholder='Search...')
-      // Settings button
-      button.btn.btn-default#animal-settings-btn(disabled,
-      uib-tooltip="Настройки", tooltip-append-to-body="true", tooltip-placement="auto bottom")
-        i.glyphicon.glyphicon-cog
+      #animal-search-sect
+        p.input-group
+          // input
+          input.form-control(type='text', ng-model='filterStr', placeholder='Search...')
+          // button
+          span.input-group-btn
+            button.btn.btn-default(type='button', ng-click='onSearchBtnClick()')
+              i.glyphicon.glyphicon-search
     #animal-table.w100(ui-grid="gridOptions", ui-grid-auto-resize, ui-grid-selection,
     ui-grid-resize-columns, ui-grid-move-columns, ui-grid-save-state)
     #animal-table-bottom-bar.ptb1

@@ -88,6 +88,9 @@ angular.module('columbia2App')
       gridApi.core.on.columnVisibilityChanged($scope, function (column) {
         saveGridState();
       });
+
+      // Single filtering
+      $scope.gridApi.grid.registerRowsProcessor($scope.singleFilter, 200);
     };
     $scope.selectedCow = null;
     function onSelectionChanged(row){
@@ -98,7 +101,10 @@ angular.module('columbia2App')
         $scope.selectedCow = null;
       }
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////
     // Double-click handling
+
     $scope.gridOptions.rowTemplate = `<div
     ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.uid"
     ui-grid-one-bind-id-grid="rowRenderIndex + '-' + col.uid + '-cell'"
@@ -108,9 +114,45 @@ angular.module('columbia2App')
     ng-dblclick="grid.appScope.onDblClick(row.entity)"
     ui-grid-cell>
     </div>`;
+
     $scope.onDblClick = function (cow) {
       $scope.onEditBtnClick();
     };
+
+    // Double-click handling
+    ///////////////////////////////////////////////////////////////////////////////////
+
+
+    //===============================================================
+    // Single filter (search)
+
+    $scope.gridOptions.enableFiltering = false;
+
+    $scope.onSearchBtnClick = function() {
+      $scope.gridApi.grid.refresh();
+    };
+
+    $scope.singleFilter = function (renderableRows) {
+      var matcher = new RegExp($scope.filterStr);
+      renderableRows.forEach(function (row) {
+        var match = false;
+
+        ['ID', 'owner'].forEach(function (field) {
+          if (row.entity[field].match(matcher)) {
+            match = true;
+          }
+        });
+
+        if (!match) {
+          row.visible = false;
+        }
+      });
+      return renderableRows;
+    };
+
+    // Single filter (search)
+    //===============================================================
+
 
     ///////////////////////////////////////////////////////
     // Grid state save / restore
