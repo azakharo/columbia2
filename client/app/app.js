@@ -10,7 +10,8 @@ angular.module('columbia2App', [
   'ui.grid',
   'ui.grid.autoResize',
   'ui.grid.selection',
-  'ui.select'
+  'ui.select',
+  'ui.grid.resizeColumns'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
