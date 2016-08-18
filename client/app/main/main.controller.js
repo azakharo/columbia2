@@ -186,6 +186,9 @@ angular.module('columbia2App')
     $scope.gridOptions.paginationPageSizes = [25, 50, 75, 100];
     $scope.gridOptions.paginationPageSize = 25;
 
+    // grid menu
+    $scope.gridOptions.enableGridMenu = true;
+
     // ui-grid setup
     //---------------------------------------------------------------
 
