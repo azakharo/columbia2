@@ -14,7 +14,7 @@ var cow = require('../api/thing/cow');
 // Create cows
 Thing.find({}).remove(function() {
 
-  let animals = _.times(100, cow.createRandomAnimal);
+  let animals = _.times(7, cow.createRandomAnimal);
 
   _.forEach(animals, function (c) {
     Thing.create(c);

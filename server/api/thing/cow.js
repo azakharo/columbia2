@@ -4,13 +4,13 @@ var _ = require('lodash');
 var moment = require('moment');
 
 
-exports.SEX = ['M', 'F'];
-exports.PORODY = ['meet', 'milk'];
-exports.CHIP_LOCATIONS = ['back', 'stomach', 'head'];
-exports.HAIRS = ['black', 'white', 'black-white'];
-exports.SPEC_CHARS = [undefined, 'eye missing', 'tail missing'];
-exports.REPRODUCTION_CHOICES = ['unsterilized', 'sterilized'];
-exports.GROUPS = ['коровы', 'нетели', 'телки до двух лет', 'молодняк'];
+const SEX = ['M', 'F'];
+const PORODY = ['meet', 'milk'];
+const CHIP_LOCATIONS = ['back', 'stomach', 'head'];
+const HAIRS = ['black', 'white', 'black-white'];
+const SPEC_CHARS = [undefined, 'eye missing', 'tail missing'];
+const REPRODUCTION_CHOICES = ['unsterilized', 'sterilized'];
+const GROUPS = ['коровы', 'нетели', 'телки до двух лет', 'молодняк'];
 
 exports.createRandomAnimal = function () {
   const birthday = moment().subtract(_.random(1000), 'days');
@@ -18,15 +18,15 @@ exports.createRandomAnimal = function () {
     ID: genGuid(),
     owner: 'Anton Subbotin',
     birthday: birthday.toDate(),
-    sex: _.sample(cow.SEX),
-    poroda: _.sample(cow.PORODY),
+    sex: _.sample(SEX),
+    poroda: _.sample(PORODY),
     motherID: genGuid(),
     chipDate: moment(birthday).add(1, 'days').toDate(),
-    chipLocation: _.sample(cow.CHIP_LOCATIONS),
-    hair: _.sample(cow.HAIRS),
-    specialCharacteristics: _.sample(cow.SPEC_CHARS),
-    reproduction: _.sample(cow.REPRODUCTION_CHOICES),
-    group: _.sample(cow.GROUPS)
+    chipLocation: _.sample(CHIP_LOCATIONS),
+    hair: _.sample(HAIRS),
+    specialCharacteristics: _.sample(SPEC_CHARS),
+    reproduction: _.sample(REPRODUCTION_CHOICES),
+    group: _.sample(GROUPS)
   }
 };
 
@@ -36,3 +36,11 @@ function genGuid() {
     return v.toString(16);
   });
 }
+
+exports.SEX = SEX;
+exports.PORODY = PORODY;
+exports.CHIP_LOCATIONS = CHIP_LOCATIONS;
+exports.HAIRS = HAIRS;
+exports.SPEC_CHARS = SPEC_CHARS;
+exports.REPRODUCTION_CHOICES = REPRODUCTION_CHOICES;
+exports.GROUPS = GROUPS;
