@@ -106,13 +106,39 @@ angular.module('columbia2App')
       socket.syncUpdates('thing', $scope.gridOptions.data);
     });
 
-    $scope.onAddBtnClick = function () {
-      log('add button clicked');
-      if (!$scope.newCow) {
-        return;
+    function createDefaultAnimal() {
+      return {
+        ID: '',
+        owner: 'Anton Subbotin',
+        birthday: moment().toDate(),
+        sex: SEX[0],
+        poroda: PORODY[0],
+        motherID: '',
+        chipDate: moment().toDate(),
+        chipLocation: CHIP_LOCATIONS[0],
+        hair: HAIRS[0],
+        specialCharacteristics: '',
+        reproduction: REPRODUCTION_CHOICES[0],
+        group: GROUPS[0]
       }
-      $http.post('/api/things', newCow);
-      $scope.newCow = null;
+    }
+
+    $scope.onAddBtnClick = function () {
+      var modalInstance = $uibModal.open({
+        templateUrl: 'app/main/animalInfoDlg.html',
+        controller: 'animalInfoDlgCtrl',
+        size: 'lg',
+        resolve: {
+          animal: function () {
+            return createDefaultAnimal();
+          }
+        },
+        windowClass: 'modal-success'
+      });
+
+      modalInstance.result.then(function (cow) {
+        $http.post('/api/things', cow);
+      });
     };
 
     $scope.onDelBtnClick = function (cow) {
@@ -133,7 +159,8 @@ angular.module('columbia2App')
           animal: function () {
             return $scope.selectedCow;
           }
-        }
+        },
+        windowClass: 'modal-primary'
       });
 
       modalInstance.result.then(function (cow) {
@@ -141,7 +168,6 @@ angular.module('columbia2App')
         //log(cow);
         $http.put('/api/things/' + $scope.selectedCow._id, cow);
       });
-
     };
 
     $scope.$on('$destroy', function () {

@@ -14,23 +14,7 @@ var cow = require('../api/thing/cow');
 // Create cows
 Thing.find({}).remove(function() {
 
-  let animals = _.times(100, function() {
-    const birthday = moment().subtract(_.random(1000), 'days');
-    return {
-      ID: genGuid(),
-      owner: 'Anton Subbotin',
-      birthday: birthday.toDate(),
-      sex: _.sample(cow.SEX),
-      poroda: _.sample(cow.PORODY),
-      motherID: genGuid(),
-      chipDate: moment(birthday).add(1, 'days').toDate(),
-      chipLocation: _.sample(cow.CHIP_LOCATIONS),
-      hair: _.sample(cow.HAIRS),
-      specialCharacteristics: _.sample(cow.SPEC_CHARS),
-      reproduction: _.sample(cow.REPRODUCTION_CHOICES),
-      group: _.sample(cow.GROUPS)
-    }
-  });
+  let animals = _.times(100, cow.createRandomAnimal);
 
   _.forEach(animals, function (c) {
     Thing.create(c);
@@ -56,11 +40,3 @@ User.find({}).remove(function() {
     }
   );
 });
-
-
-function genGuid() {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
-    return v.toString(16);
-  });
-}
