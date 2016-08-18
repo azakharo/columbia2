@@ -182,6 +182,10 @@ angular.module('columbia2App')
     // Grid state save / restore
     ///////////////////////////////////////////////////////
 
+    // pagination
+    $scope.gridOptions.paginationPageSizes = [25, 50, 75, 100];
+    $scope.gridOptions.paginationPageSize = 25;
+
     // ui-grid setup
     //---------------------------------------------------------------
 
