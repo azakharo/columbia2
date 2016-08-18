@@ -56,7 +56,7 @@
         .dlg-field-name Father:
         .dlg-field-value
           input.form-control.bold(type='text', ng-model='animal.fatherID')
-  hr
+  //hr
   .dlg-row
     .dlg-col1
       .dlg-field-container
@@ -76,7 +76,7 @@
               span.bold(ng-bind='$select.selected')
             ui-select-choices(repeat='g in GROUPS')
               span(ng-bind='g')
-  hr
+  //hr
   .dlg-row
     .dlg-col1
       .dlg-field-container
@@ -92,7 +92,7 @@
     .dlg-field-name-autosize.pr1 Notes:
     .dlg-field-value
       textarea#special-notes-textarea.bold(ng-model="animal.specialCharacteristics")
-  hr
+  //hr
   .dlg-row
     .dlg-col1
       .dlg-field-container
@@ -118,12 +118,11 @@
               span.bold(ng-bind='$select.selected')
             ui-select-choices(repeat='l in CHIP_LOCATIONS')
               span(ng-bind='l')
-  .dlg-field-container
+  .dlg-field-container.pb1
     .dlg-field-name-autosize.pr1 Owner:
     .dlg-field-value
       input.form-control.bold(ng-model="animal.owner")
-.modal-footer
-  .Grid.Grid--justifyCenter
+  .Grid.Grid--justifyCenter.mt1
     .Grid-cell--autoSize
-      button.btn.btn-primary(type='button', ng-click='onOk()') OK
+      button.btn.btn-primary.mr1(type='button', ng-click='onOk()') OK
       button.btn.btn-danger(type='button', ng-click='onCancel()') Cancel
