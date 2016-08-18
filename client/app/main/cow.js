@@ -7,4 +7,4 @@ var PORODY = ['meet', 'milk'];
 var CHIP_LOCATIONS = ['back', 'stomach', 'head'];
 var HAIRS = ['black', 'white', 'black-white'];
 var REPRODUCTION_CHOICES = ['unsterilized', 'sterilized'];
-var GROUPS = ['коровы', 'нетели', 'телки до двух лет', 'молодняк'];
+var GROUPS = ['cow', 'heifer', 'heifer upto 2 years', 'young'];

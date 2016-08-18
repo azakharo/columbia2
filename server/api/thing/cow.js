@@ -10,7 +10,7 @@ const CHIP_LOCATIONS = ['back', 'stomach', 'head'];
 const HAIRS = ['black', 'white', 'black-white'];
 const SPEC_CHARS = [undefined, 'eye missing', 'tail missing'];
 const REPRODUCTION_CHOICES = ['unsterilized', 'sterilized'];
-const GROUPS = ['коровы', 'нетели', 'телки до двух лет', 'молодняк'];
+const GROUPS = ['cow', 'heifer', 'heifer upto 2 years', 'young'];
 
 exports.createRandomAnimal = function () {
   const birthday = moment().subtract(_.random(1000), 'days');
