@@ -2,10 +2,11 @@
 
 angular.module('columbia2App')
   .controller('animalInfoDlgCtrl',
-  function ($scope, $uibModalInstance, animal) {
+  function ($scope, $uibModalInstance, animal, operation) {
     $scope.animal = angular.copy(animal);
     $scope.animal.birthday = new Date($scope.animal.birthday);
     $scope.animal.chipDate = new Date($scope.animal.chipDate);
+    $scope.operation = operation;
 
     $scope.onOk = function () {
       $uibModalInstance.close($scope.animal);

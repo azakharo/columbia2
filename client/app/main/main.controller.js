@@ -131,6 +131,9 @@ angular.module('columbia2App')
         resolve: {
           animal: function () {
             return createDefaultAnimal();
+          },
+          operation: function () {
+            return 'создание';
           }
         },
         windowClass: 'modal-success'
@@ -158,6 +161,9 @@ angular.module('columbia2App')
         resolve: {
           animal: function () {
             return $scope.selectedCow;
+          },
+          operation: function () {
+            return 'редактирование';
           }
         },
         windowClass: 'modal-primary'
