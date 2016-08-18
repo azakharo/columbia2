@@ -39,27 +39,31 @@ angular.module('columbia2App')
         displayName: 'Chipped',
         field: 'chipDate',
         type: 'date',
-        cellFilter: 'date: "yyyy-MM-dd"'
+        cellFilter: 'date: "yyyy-MM-dd"',
+        visible: false
       },
       {
         displayName: 'Chip Location',
-        field: 'chipLocation'
+        field: 'chipLocation',
+        visible: false
       },
       {
         displayName: 'Wool',
-        field: 'hair'
+        field: 'hair',
+        visible: false
       },
       {
         displayName: 'Notes',
-        field: 'specialCharacteristics'
-      },
-      {
-        displayName: 'Reproduction',
-        field: 'reproduction'
+        field: 'specialCharacteristics',
+        visible: false
       },
       {
         displayName: 'Group',
         field: 'group'
+      },
+      {
+        displayName: 'Reproduction',
+        field: 'reproduction'
       }
     ];
 
