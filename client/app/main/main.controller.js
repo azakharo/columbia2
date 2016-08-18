@@ -89,6 +89,11 @@ angular.module('columbia2App')
         saveGridState();
       });
 
+      // Save grid state on column resize
+      gridApi.colResizable.on.columnSizeChanged($scope, function(colDef, deltaChange) {
+        saveGridState();
+      });
+
       // Single filtering
       $scope.gridApi.grid.registerRowsProcessor($scope.singleFilter, 200);
     };
