@@ -133,13 +133,19 @@ angular.module('columbia2App')
     };
 
     $scope.singleFilter = function (renderableRows) {
-      var matcher = new RegExp($scope.filterStr);
+      let matcher = new RegExp($scope.filterStr);
+      let visibleCols = _.filter($scope.gridOptions.columnDefs, function (colDef) {
+        return colDef.visible === undefined || colDef.visible;
+      });
+
       renderableRows.forEach(function (row) {
         var match = false;
 
-        ['ID', 'owner'].forEach(function (field) {
-          if (row.entity[field].match(matcher)) {
+        _.forEach(visibleCols, function (colDef) {
+          let colVal = row.entity[colDef.field];
+          if (colVal && colVal.match(matcher)) {
             match = true;
+            return  false;
           }
         });
 
