@@ -27,8 +27,8 @@ angular.module('columbia2App')
       showWeeks: false
     };
 
-    $scope.dateFormat = 'yyyy-MM-dd';
-    $scope.altInputFormats = ['yyyy-d!-M!'];
+    $scope.dateFormat = 'dd.MM.yyyy';
+    $scope.altInputFormats = ['d!.M!.yyyy'];
 
     // Date picker
     //===================================
