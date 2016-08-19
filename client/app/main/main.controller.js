@@ -253,7 +253,7 @@ angular.module('columbia2App')
             $scope.selectedCow = null;
           }
         );
-        openConfirmFunc(`animal with id ${cow.ID}`);
+        openConfirmFunc(`животное с id ${cow.ID}`);
       }
     };
 
