@@ -9,12 +9,12 @@
   #page-content.ptb1.plr3
     #animal-table-top-bar.pb1
       // Title
-      #animal-page-title.text-xlarge.bold Animals
+      #animal-page-title.text-xlarge.bold Животные
       // Search Input
       #animal-search-sect
         p.input-group
           // input
-          input.form-control(type='text', ng-model='filterStr', placeholder='Search...')
+          input.form-control(type='text', ng-model='filterStr', placeholder='Поиск...')
           // button
           span.input-group-btn
             button.btn.btn-default(type='button', ng-click='onSearchBtnClick()')
@@ -23,11 +23,11 @@
     ui-grid-resize-columns, ui-grid-move-columns, ui-grid-save-state, ui-grid-pagination)
     #animal-table-bottom-bar.ptb1
       // Add button
-      button.btn.btn-success.mr1(ng-click="onAddBtnClick()") Add...
+      button.btn.btn-success.mr1(ng-click="onAddBtnClick()") Добавить...
       // Edit button
-      button.btn.btn-defaul.mr1(ng-click="onEditBtnClick(selectedCow)", ng-disabled="!selectedCow") Edit...
+      button.btn.btn-defaul.mr1(ng-click="onEditBtnClick(selectedCow)", ng-disabled="!selectedCow") Изменить...
       // Del button
-      button.btn.btn-danger.mr3(ng-click="onDelBtnClick(selectedCow)", ng-disabled="!selectedCow") Delete...
+      button.btn.btn-danger.mr3(ng-click="onDelBtnClick(selectedCow)", ng-disabled="!selectedCow") Удалить...
 
   //footer#footer.text-center Copyright &copy; 2015-2016 &mdash;&nbsp;
   //  a(href="http://sarov-itc.ru/" target="_blank") ИТЦ "Система-Саров"

@@ -49,7 +49,7 @@ angular.module('columbia2App', [
         }
       }
     };
-  });
+  })
 
   //.run(function ($rootScope, $location, Auth) {
   //  // Redirect to login if route requires auth and you're not logged in
@@ -63,15 +63,15 @@ angular.module('columbia2App', [
   //  });
   //})
 
-  //.run(function (i18nService, uibDatepickerPopupConfig) {
-  //  // ui-grid
-  //  i18nService.setCurrentLang('ru');
-  //
-  //  // moment js
-  //  moment.locale('ru');
-  //
-  //  // Date picker translations
-  //  uibDatepickerPopupConfig.currentText = 'Сегодня';
-  //  uibDatepickerPopupConfig.clearText = 'Очистить';
-  //  uibDatepickerPopupConfig.closeText = 'Закрыть';
-  //});
+  .run(function (i18nService, uibDatepickerPopupConfig) {
+    // ui-grid
+    i18nService.setCurrentLang('ru');
+
+    // moment js
+    moment.locale('ru');
+
+    // Date picker translations
+    uibDatepickerPopupConfig.currentText = 'Сегодня';
+    uibDatepickerPopupConfig.clearText = 'Очистить';
+    uibDatepickerPopupConfig.closeText = 'Закрыть';
+  });

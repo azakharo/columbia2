@@ -18,51 +18,51 @@ angular.module('columbia2App')
         field: 'ID'
       },
       {
-        displayName: 'Owner',
+        displayName: 'Владелец',
         field: 'owner'
       },
       {
-        displayName: 'Birthday',
+        displayName: 'Дата рождения',
         field: 'birthday',
         type: 'date',
-        cellFilter: 'date: "yyyy-MM-dd"'
+        cellFilter: 'date: "dd.MM.yyyy"'
       },
       {
-        displayName: 'Sex',
+        displayName: 'Пол',
         field: 'sex'
       },
       {
-        displayName: 'Type',
+        displayName: 'Порода',
         field: 'poroda'
       },
       {
-        displayName: 'Chipped',
+        displayName: 'Дата чипирования',
         field: 'chipDate',
         type: 'date',
-        cellFilter: 'date: "yyyy-MM-dd"',
+        cellFilter: 'date: "dd.MM.yyyy"',
         visible: false
       },
       {
-        displayName: 'Chip Location',
+        displayName: 'Расположение чипа',
         field: 'chipLocation',
         visible: false
       },
       {
-        displayName: 'Wool',
+        displayName: 'Окрас',
         field: 'hair',
         visible: false
       },
       {
-        displayName: 'Notes',
+        displayName: 'Заметки',
         field: 'specialCharacteristics',
         visible: false
       },
       {
-        displayName: 'Group',
+        displayName: 'Группа',
         field: 'group'
       },
       {
-        displayName: 'Reproduction',
+        displayName: 'Репродуктивность',
         field: 'reproduction'
       }
     ];

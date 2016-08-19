@@ -9,7 +9,7 @@
   .dlg-row
     .dlg-col1
       .dlg-field-container
-        .dlg-field-name Birthday:
+        .dlg-field-name Дата рождения:
         .dlg-field-value-overflow
           // Date picker
           p.input-group
@@ -24,12 +24,12 @@
                 i.glyphicon.glyphicon-calendar
     .dlg-col2
       .dlg-field-container
-        .dlg-field-name Age (full years):
+        .dlg-field-name Возраст (полных лет):
         .dlg-field-value.bold {{ getFullYearsFrom(animal.birthday) }}
   .dlg-row
     .dlg-col1
       .dlg-field-container
-        .dlg-field-name Sex:
+        .dlg-field-name Пол:
         .dlg-field-value-overflow
           ui-select(ng-model='animal.sex')
             ui-select-match
@@ -38,7 +38,7 @@
               span(ng-bind='s')
     .dlg-col2
       .dlg-field-container
-        .dlg-field-name Type:
+        .dlg-field-name Порода:
         .dlg-field-value-overflow
           ui-select(ng-model='animal.poroda')
             ui-select-match
@@ -48,19 +48,19 @@
   .dlg-row
     .dlg-col1
       .dlg-field-container
-        .dlg-field-name Mother:
+        .dlg-field-name Мать:
         .dlg-field-value
           input.form-control.bold(type='text', ng-model='animal.motherID')
     .dlg-col2
       .dlg-field-container
-        .dlg-field-name Father:
+        .dlg-field-name Отец:
         .dlg-field-value
           input.form-control.bold(type='text', ng-model='animal.fatherID')
   //hr
   .dlg-row
     .dlg-col1
       .dlg-field-container
-        .dlg-field-name Reproduction:
+        .dlg-field-name Репродуктивноть:
         .dlg-field-value-overflow
           ui-select(ng-model='animal.reproduction')
             ui-select-match
@@ -69,7 +69,7 @@
               span(ng-bind='r')
     .dlg-col2
       .dlg-field-container
-        .dlg-field-name Group:
+        .dlg-field-name Группа:
         .dlg-field-value-overflow
           ui-select(ng-model='animal.group')
             ui-select-match
@@ -80,7 +80,7 @@
   .dlg-row
     .dlg-col1
       .dlg-field-container
-        .dlg-field-name Wool:
+        .dlg-field-name Окрас:
         .dlg-field-value-overflow
           ui-select(ng-model='animal.hair')
             ui-select-match
@@ -89,14 +89,14 @@
               span(ng-bind='h')
     .dlg-col2
   .dlg-field-container
-    .dlg-field-name-autosize.pr1 Notes:
+    .dlg-field-name-autosize.pr1 Заметки:
     .dlg-field-value
       textarea#special-notes-textarea.bold(ng-model="animal.specialCharacteristics")
   //hr
   .dlg-row
     .dlg-col1
       .dlg-field-container
-        .dlg-field-name Chipped at:
+        .dlg-field-name Дата чипирования:
         .dlg-field-value-overflow
           // Date picker
           p.input-group
@@ -111,7 +111,7 @@
                 i.glyphicon.glyphicon-calendar
     .dlg-col2
       .dlg-field-container
-        .dlg-field-name Chip Location:
+        .dlg-field-name Расположение чипа:
         .dlg-field-value-overflow
           ui-select(ng-model='animal.chipLocation')
             ui-select-match
@@ -119,10 +119,10 @@
             ui-select-choices(repeat='l in CHIP_LOCATIONS')
               span(ng-bind='l')
   .dlg-field-container.pb1
-    .dlg-field-name-autosize.pr1 Owner:
+    .dlg-field-name-autosize.pr1 Владелец:
     .dlg-field-value
       input.form-control.bold(ng-model="animal.owner")
   .Grid.Grid--justifyCenter.mt1
     .Grid-cell--autoSize
       button.btn.btn-primary.mr1(type='button', ng-click='onOk()') OK
-      button.btn.btn-danger(type='button', ng-click='onCancel()') Cancel
+      button.btn.btn-danger(type='button', ng-click='onCancel()') Отмена
