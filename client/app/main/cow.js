@@ -2,9 +2,9 @@
 
 // IMPORTANT!
 // This file MUST BE in sync with its server's version!!!
-var SEX = ['M', 'F'];
-var PORODY = ['meat', 'milk'];
-var CHIP_LOCATIONS = ['back', 'stomach', 'head'];
-var HAIRS = ['black', 'white', 'black-white'];
-var REPRODUCTION_CHOICES = ['unsterilized', 'sterilized'];
-var GROUPS = ['cow', 'heifer', 'heifer upto 2 years', 'young'];
+var SEX = ['М', 'Ж'];
+var PORODY = ['молочная', 'мясная'];
+var CHIP_LOCATIONS = ['спина', 'живот', 'голова'];
+var HAIRS = ['черный', 'белый', 'черно-белый'];
+var REPRODUCTION_CHOICES = ['нестерилизовано', 'стерилизовано'];
+var GROUPS = ['коровы', 'нетели', 'телки до 2-х лет', 'молодняк'];

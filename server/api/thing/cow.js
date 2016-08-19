@@ -4,19 +4,19 @@ var _ = require('lodash');
 var moment = require('moment');
 
 
-const SEX = ['M', 'F'];
-const PORODY = ['meat', 'milk'];
-const CHIP_LOCATIONS = ['back', 'stomach', 'head'];
-const HAIRS = ['black', 'white', 'black-white'];
-const SPEC_CHARS = [undefined, 'eye missing', 'tail missing'];
-const REPRODUCTION_CHOICES = ['unsterilized', 'sterilized'];
-const GROUPS = ['cow', 'heifer', 'heifer upto 2 years', 'young'];
+const SEX = ['М', 'Ж'];
+const PORODY = ['молочная', 'мясная'];
+const CHIP_LOCATIONS = ['спина', 'живот', 'голова'];
+const HAIRS = ['черный', 'белый', 'черно-белый'];
+const SPEC_CHARS = [undefined, 'отсутствует глаз', 'отсутствует хвост'];
+const REPRODUCTION_CHOICES = ['нестерилизовано', 'стерилизовано'];
+const GROUPS = ['коровы', 'нетели', 'телки до 2-х лет', 'молодняк'];
 
 exports.createRandomAnimal = function () {
   const birthday = moment().subtract(_.random(1000), 'days');
   return {
     ID: genGuid(),
-    owner: 'Anton Subbotin',
+    owner: 'Антон Субботин',
     birthday: birthday.toDate(),
     sex: _.sample(SEX),
     poroda: _.sample(PORODY),
