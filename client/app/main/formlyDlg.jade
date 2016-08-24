@@ -1,0 +1,11 @@
+.modal-header
+  button.close(type='button', ng-click='$dismiss()') &times;
+  h3.modal-title Паспорт животного
+.modal-body
+  form(novalidate='')
+    formly-form(model='animal', fields='fields', form='animalForm')
+.modal-footer
+  .Grid.Grid--justifyCenter.mt1
+    .Grid-cell--autoSize
+      button.btn.btn-primary.mr1(type='button', ng-click='onOk()', ng-disabled='animalForm.$invalid') OK
+      button.btn.btn-danger(type='button', ng-click='onCancel()') Отмена

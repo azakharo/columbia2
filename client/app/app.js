@@ -15,7 +15,9 @@ angular.module('columbia2App', [
   'ui.grid.moveColumns',
   'ui.grid.saveState',
   'ui.grid.pagination',
-  'LocalStorageModule'
+  'LocalStorageModule',
+  'formly',
+  'formlyBootstrap'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

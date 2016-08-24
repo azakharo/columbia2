@@ -258,26 +258,50 @@ angular.module('columbia2App')
     };
 
     $scope.onEditBtnClick = function () {
-      var modalInstance = $uibModal.open({
-        templateUrl: 'app/main/animalInfoDlg.html',
-        controller: 'animalInfoDlgCtrl',
-        size: 'lg',
-        resolve: {
-          animal: function () {
-            return $scope.selectedCow;
+      if ($scope.selectedCow.sex === 'М') {
+        var modalInstance = $uibModal.open({
+          templateUrl: 'app/main/formlyDlg.html',
+          controller: 'formlyDlgCtrl',
+          size: 'lg',
+          resolve: {
+            animal: function () {
+              return $scope.selectedCow;
+            },
+            operation: function () {
+              return 'редактирование';
+            }
           },
-          operation: function () {
-            return 'редактирование';
-          }
-        },
-        windowClass: 'modal-primary'
-      });
+          windowClass: 'modal-primary'
+        });
 
-      modalInstance.result.then(function (cow) {
-        //log($scope.selectedCow);
-        //log(cow);
-        $http.put('/api/things/' + $scope.selectedCow._id, cow);
-      });
+        modalInstance.result.then(function (cow) {
+          //log($scope.selectedCow);
+          //log(cow);
+          $http.put('/api/things/' + $scope.selectedCow._id, cow);
+        });
+      }
+      else {
+        var modalInstance = $uibModal.open({
+          templateUrl: 'app/main/animalInfoDlg.html',
+          controller: 'animalInfoDlgCtrl',
+          size: 'lg',
+          resolve: {
+            animal: function () {
+              return $scope.selectedCow;
+            },
+            operation: function () {
+              return 'редактирование';
+            }
+          },
+          windowClass: 'modal-primary'
+        });
+
+        modalInstance.result.then(function (cow) {
+          //log($scope.selectedCow);
+          //log(cow);
+          $http.put('/api/things/' + $scope.selectedCow._id, cow);
+        });
+      }
     };
 
     $scope.$on('$destroy', function () {
