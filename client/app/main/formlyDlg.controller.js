@@ -88,11 +88,20 @@ angular.module('columbia2App')
         type: 'datepicker',
         templateOptions: {
           label: 'Birthday',
-          type: 'text',
+          type: 'text'
           //datepickerOptions: {
           //  format: 'dd.MM.yyyy',
           //  showWeeks: false
           //}
+        }
+      },
+      {
+        key: 'specialCharacteristics',
+        type: 'textarea',
+        templateOptions: {
+          label: 'Заметки',
+          placeholder: 'Особые отметки...',
+          rows: 3
         }
       }
     ];
