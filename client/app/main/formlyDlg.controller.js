@@ -8,32 +8,6 @@ angular.module('columbia2App')
     $scope.animal.chipDate = new Date($scope.animal.chipDate);
     $scope.operation = operation;
 
-    $scope.fields = [
-      {
-        key: 'ID',
-        type: 'input',
-        templateOptions: {
-          type: 'text',
-          label: 'ID',
-          placeholder: 'Enter animal ID',
-          required: true
-        },
-        validators: {
-          checkFrmt: function ($viewValue, $modelValue, scope) {
-            var value = $viewValue || $modelValue;
-            if (value) {
-              return /^[A-Za-z0-9]{8}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{12}$/.test(value);
-            } else {
-              return false;
-            }
-          }
-        },
-        "validation": {
-          "show": true
-        }
-      }
-    ];
-
     $scope.onOk = function () {
       $uibModalInstance.close($scope.animal);
     };
@@ -70,5 +44,45 @@ angular.module('columbia2App')
     $scope.getFullYearsFrom = function (date) {
       return moment().diff(moment(date), 'years');
     };
+
+    $scope.fields = [
+      {
+        key: 'ID',
+        type: 'input',
+        templateOptions: {
+          type: 'text',
+          label: 'ID',
+          placeholder: 'Enter animal ID',
+          required: true
+        },
+        validators: {
+          checkFrmt: function ($viewValue, $modelValue, scope) {
+            var value = $viewValue || $modelValue;
+            if (value) {
+              return /^[A-Za-z0-9]{8}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{12}$/.test(value);
+            } else {
+              return false;
+            }
+          }
+        },
+        "validation": {
+          "show": true
+        }
+      },
+      {
+        key: 'sex',
+        type: 'ui-select-single',
+        templateOptions: {
+          optionsAttr: 'bs-options',
+          ngOptions: 'option[to.valueProp] as option in to.options | filter: $select.search',
+          label: 'Sex',
+          valueProp: 'name',
+          labelProp: 'name',
+          placeholder: 'Select sex',
+          //description: 'Template includes the allow-clear option on the ui-select-match element',
+          options: _.map(SEX, (s) => { return {name: s} })
+        }
+      }
+    ];
 
   });
