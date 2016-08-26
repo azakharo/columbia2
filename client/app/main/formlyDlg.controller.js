@@ -2,7 +2,7 @@
 
 angular.module('columbia2App')
   .controller('formlyDlgCtrl',
-  function ($scope, $uibModalInstance, animal, operation) {
+  function ($scope, $rootScope, $uibModalInstance, animal, operation) {
     $scope.animal = angular.copy(animal);
     $scope.animal.birthday = new Date($scope.animal.birthday);
     $scope.animal.chipDate = new Date($scope.animal.chipDate);
@@ -96,6 +96,13 @@ angular.module('columbia2App')
         }
       },
       {
+        noFormControl: true,
+        template: '<p><span>Полных лет: </span><span class="bold" ng-bind="rootscope.animalFullYears"></span></p>',
+        controller: function($scope, $rootScope) {
+          $scope.rootscope = $rootScope;
+        }
+      },
+      {
         key: 'specialCharacteristics',
         type: 'textarea',
         templateOptions: {
@@ -105,5 +112,14 @@ angular.module('columbia2App')
         }
       }
     ];
+
+    $scope.$watch('animal.birthday', function () {
+      $rootScope.animalFullYears = getFullYearsFrom($scope.animal.birthday);
+    });
+
+
+    function getFullYearsFrom(date) {
+      return moment().diff(moment(date), 'years');
+    }
 
   });
