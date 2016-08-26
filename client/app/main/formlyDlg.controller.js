@@ -17,6 +17,19 @@ angular.module('columbia2App')
           label: 'ID',
           placeholder: 'Enter animal ID',
           required: true
+        },
+        validators: {
+          checkFrmt: function ($viewValue, $modelValue, scope) {
+            var value = $viewValue || $modelValue;
+            if (value) {
+              return /^[A-Za-z0-9]{8}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{12}$/.test(value);
+            } else {
+              return false;
+            }
+          }
+        },
+        "validation": {
+          "show": true
         }
       }
     ];
