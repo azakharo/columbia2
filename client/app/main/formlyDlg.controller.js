@@ -82,6 +82,18 @@ angular.module('columbia2App')
           //description: 'Template includes the allow-clear option on the ui-select-match element',
           options: _.map(SEX, (s) => { return {name: s} })
         }
+      },
+      {
+        key: 'birthday',
+        type: 'datepicker',
+        templateOptions: {
+          label: 'Birthday',
+          type: 'text',
+          //datepickerOptions: {
+          //  format: 'dd.MM.yyyy',
+          //  showWeeks: false
+          //}
+        }
       }
     ];
 
