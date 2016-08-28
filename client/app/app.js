@@ -36,7 +36,7 @@ angular.module('columbia2App', [
         } else {
           object = JSON.parse(data);
         }
-        return recurseObject(object);
+        return deserializeDates(object);
       } catch(e) {
         return data;
       }
@@ -93,22 +93,3 @@ angular.module('columbia2App', [
     uibDatepickerPopupConfig.clearText = 'Очистить';
     uibDatepickerPopupConfig.closeText = 'Закрыть';
   });
-
-
-// $http response, convert string to dates
-var dateRegex = /^\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d(\.\d+)?([+-][0-2]\d(:?[0-5]\d)?|Z)$/;
-function recurseObject(object) {
-  var result = object;
-  if (object != null) {
-    result = angular.copy(object);
-    for (var key in result) {
-      var property = result[key];
-      if (typeof property === 'object') {
-        result[key] = recurseObject(property);
-      } else if (typeof property === 'string' && dateRegex.test(property)) {
-        result[key] = new Date(property);
-      }
-    }
-  }
-  return result;
-}
