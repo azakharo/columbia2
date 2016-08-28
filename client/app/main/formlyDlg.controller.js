@@ -4,8 +4,6 @@ angular.module('columbia2App')
   .controller('formlyDlgCtrl',
   function ($scope, $rootScope, $uibModalInstance, animal, operation) {
     $scope.animal = angular.copy(animal);
-    $scope.animal.birthday = new Date($scope.animal.birthday);
-    $scope.animal.chipDate = new Date($scope.animal.chipDate);
     $scope.operation = operation;
 
     $scope.onOk = function () {
