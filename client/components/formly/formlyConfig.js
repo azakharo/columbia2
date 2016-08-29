@@ -12,7 +12,11 @@ app.run(function(formlyConfig) {
     extends: 'select',
     templateUrl: 'components/formly/ui-select-single.html'
   });
-
+  formlyConfig.setType({
+    name: 'ui-select-multiple',
+    extends: 'select',
+    templateUrl: 'components/formly/formly-ui-select-multiple.html'
+  });
 
   ////////////////////////////////////////////////////////////////////////
   // UI Datepicker config

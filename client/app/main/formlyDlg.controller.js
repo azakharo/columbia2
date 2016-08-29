@@ -82,6 +82,19 @@ angular.module('columbia2App')
         }
       },
       {
+        key: 'groups',
+        type: 'ui-select-multiple',
+        templateOptions: {
+          optionsAttr: 'bs-options',
+          ngOptions: 'option[to.valueProp] as option in to.options | filter: $select.search',
+          label: 'Groups',
+          valueProp: 'name',
+          labelProp: 'name',
+          placeholder: 'Select groups...',
+          options: _.map(GROUPS, (g) => { return {name: g} })
+        }
+      },
+      {
         key: 'birthday',
         type: 'datepicker',
         templateOptions: {
