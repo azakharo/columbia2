@@ -1,0 +1,4 @@
+ui-select(multiple='', data-ng-model='model[options.key]', data-required='{{to.required}}', data-disabled='{{to.disabled}}', theme='bootstrap')
+  ui-select-match(placeholder='{{to.placeholder}}') {{$item[to.labelProp]}}
+  ui-select-choices(data-repeat='option[to.valueProp] as option in to.options | filter: $select.search')
+    div(ng-bind-html='option[to.labelProp] | highlight: $select.search')

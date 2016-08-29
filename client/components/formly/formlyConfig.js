@@ -10,7 +10,7 @@ app.run(function(formlyConfig) {
   formlyConfig.setType({
     name: 'ui-select-single',
     extends: 'select',
-    templateUrl: 'components/formly/ui-select-single.html'
+    templateUrl: 'components/formly/formly-ui-select-single.html'
   });
   formlyConfig.setType({
     name: 'ui-select-multiple',
