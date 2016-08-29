@@ -58,8 +58,9 @@ angular.module('columbia2App')
         visible: false
       },
       {
-        displayName: 'Группа',
-        field: 'group'
+        displayName: 'Группы',
+        field: 'groups',
+        cellFilter: 'GroupsFilter'
       },
       {
         displayName: 'Репродуктивность',
@@ -220,7 +221,7 @@ angular.module('columbia2App')
         hair: HAIRS[0],
         specialCharacteristics: '',
         reproduction: REPRODUCTION_CHOICES[0],
-        group: GROUPS[0]
+        groups: []
       }
     }
 
@@ -311,4 +312,11 @@ angular.module('columbia2App')
     // Operations with cows on server
     //////////////////////////////////////////////////////////////////////
 
+  })
+
+  .filter('GroupsFilter', function () {
+    return function (groups) {
+      return groups.join(', ');
+    };
   });
+

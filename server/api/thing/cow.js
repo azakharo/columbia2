@@ -26,7 +26,7 @@ exports.createRandomAnimal = function () {
     hair: _.sample(HAIRS),
     specialCharacteristics: _.sample(SPEC_CHARS),
     reproduction: _.sample(REPRODUCTION_CHOICES),
-    group: _.sample(GROUPS)
+    groups: [_.sample(GROUPS)]
   }
 };
 

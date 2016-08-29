@@ -32,10 +32,7 @@ var ThingSchema = new Schema({
     type: String,
     enum : cow.REPRODUCTION_CHOICES
   },
-  group: {
-    type: String,
-    enum : cow.GROUPS
-  }
+  groups: [String]
 });
 
 module.exports = mongoose.model('Thing', ThingSchema);

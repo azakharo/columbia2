@@ -71,9 +71,9 @@
       .dlg-field-container
         .dlg-field-name Группа:
         .dlg-field-value-overflow
-          ui-select(ng-model='animal.group')
+          ui-select(ng-model='animal.groups', multiple)
             ui-select-match
-              span.bold(ng-bind='$select.selected')
+              span.bold(ng-bind='$item')
             ui-select-choices(repeat='g in GROUPS')
               span(ng-bind='g')
   //hr

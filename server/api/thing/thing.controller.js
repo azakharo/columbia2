@@ -47,6 +47,7 @@ exports.update = function(req, res) {
     if(!thing) { return res.status(404).send('Not Found'); }
     var updated = _.merge(thing, req.body);
     console.log(updated);
+    updated.markModified('groups');
     updated.save(function (err) {
       if (err) {
         return handleError(res, err);
