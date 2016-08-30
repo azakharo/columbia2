@@ -111,19 +111,19 @@ angular.module('columbia2App')
     ///////////////////////////////////////////////////////////////////////////////////
     // Double-click handling
 
-    $scope.gridOptions.rowTemplate = `<div
-    ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.uid"
-    ui-grid-one-bind-id-grid="rowRenderIndex + '-' + col.uid + '-cell'"
-    class="ui-grid-cell"
-    ng-class="{ 'ui-grid-row-header-cell': col.isRowHeader }"
-    role="{{col.isRowHeader ? 'rowheader' : 'gridcell'}}"
-    ng-dblclick="grid.appScope.onDblClick(row.entity)"
-    ui-grid-cell>
-    </div>`;
-
-    $scope.onDblClick = function (cow) {
-      $scope.onEditBtnClick();
-    };
+    //$scope.gridOptions.rowTemplate = `<div
+    //ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.uid"
+    //ui-grid-one-bind-id-grid="rowRenderIndex + '-' + col.uid + '-cell'"
+    //class="ui-grid-cell"
+    //ng-class="{ 'ui-grid-row-header-cell': col.isRowHeader }"
+    //role="{{col.isRowHeader ? 'rowheader' : 'gridcell'}}"
+    //ng-dblclick="grid.appScope.onDblClick(row.entity)"
+    //ui-grid-cell>
+    //</div>`;
+    //
+    //$scope.onDblClick = function (cow) {
+    //  $scope.onEditBtnClick();
+    //};
 
     // Double-click handling
     ///////////////////////////////////////////////////////////////////////////////////
