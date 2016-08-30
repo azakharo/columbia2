@@ -139,6 +139,10 @@ angular.module('columbia2App')
     };
 
     $scope.singleFilter = function (renderableRows) {
+      if (!$scope.filterStr) {
+        return renderableRows;
+      }
+
       let matcher = new RegExp($scope.filterStr);
       let visibleCols = _.filter($scope.gridOptions.columnDefs, function (colDef) {
         return colDef.visible === undefined || colDef.visible;
@@ -148,7 +152,17 @@ angular.module('columbia2App')
         var match = false;
 
         _.forEach(visibleCols, function (colDef) {
-          let colVal = row.entity[colDef.field];
+          let colVal;
+          if (colDef.field === 'birthday' || colDef.field === 'chipDate') {
+            colVal = moment(row.entity[colDef.field]).format('DD.MM.YYYY');
+          }
+          else if (colDef.field === 'groups') {
+            colVal = row.entity[colDef.field].join(', ');
+          }
+          else {
+            colVal = row.entity[colDef.field];
+          }
+
           if (colVal && colVal.match(matcher)) {
             match = true;
             return  false;
