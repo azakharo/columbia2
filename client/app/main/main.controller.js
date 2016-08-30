@@ -30,7 +30,9 @@ angular.module('columbia2App')
       },
       {
         displayName: 'Пол',
-        field: 'sex'
+        field: 'sex',
+        editableCellTemplate: 'ui-grid/dropdownEditor',
+        editDropdownOptionsArray: _.map(SEX, (s) => { return {id: s, value: s}; })
       },
       {
         displayName: 'Порода',
@@ -101,6 +103,7 @@ angular.module('columbia2App')
 
       // Save after cell edit
       gridApi.edit.on.afterCellEdit($scope, function(rowEntity, colDef, newValue, oldValue) {
+        // TODO rem code dupl
         $http.put('/api/things/' + $scope.selectedCow._id, $scope.selectedCow);
       });
     };
