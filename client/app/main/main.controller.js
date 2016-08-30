@@ -15,7 +15,8 @@ angular.module('columbia2App')
     $scope.gridOptions.columnDefs = [
       {
         displayName: 'Id',
-        field: 'ID'
+        field: 'ID',
+        enableCellEdit: false
       },
       {
         displayName: 'Владелец',
@@ -97,6 +98,11 @@ angular.module('columbia2App')
 
       // Single filtering
       $scope.gridApi.grid.registerRowsProcessor($scope.singleFilter, 200);
+
+      // Save after cell edit
+      gridApi.edit.on.afterCellEdit($scope, function(rowEntity, colDef, newValue, oldValue) {
+        $http.put('/api/things/' + $scope.selectedCow._id, $scope.selectedCow);
+      });
     };
     $scope.selectedCow = null;
     function onSelectionChanged(row){

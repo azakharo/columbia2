@@ -15,6 +15,7 @@ angular.module('columbia2App', [
   'ui.grid.moveColumns',
   'ui.grid.saveState',
   'ui.grid.pagination',
+  'ui.grid.edit',
   'LocalStorageModule',
   'formly',
   'formlyBootstrap',
