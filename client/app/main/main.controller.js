@@ -26,7 +26,8 @@ angular.module('columbia2App')
         displayName: 'Дата рождения',
         field: 'birthday',
         type: 'date',
-        cellFilter: 'date: "dd.MM.yyyy"'
+        cellFilter: 'date: "dd.MM.yyyy"',
+        enableCellEdit: false
       },
       {
         displayName: 'Пол',
@@ -36,24 +37,28 @@ angular.module('columbia2App')
       },
       {
         displayName: 'Порода',
-        field: 'poroda'
+        field: 'poroda',
+        enableCellEdit: false
       },
       {
         displayName: 'Дата чипирования',
         field: 'chipDate',
         type: 'date',
         cellFilter: 'date: "dd.MM.yyyy"',
-        visible: false
+        visible: false,
+        enableCellEdit: false
       },
       {
         displayName: 'Расположение чипа',
         field: 'chipLocation',
-        visible: false
+        visible: false,
+        enableCellEdit: false
       },
       {
         displayName: 'Окрас',
         field: 'hair',
-        visible: false
+        visible: false,
+        enableCellEdit: false
       },
       {
         displayName: 'Заметки',
@@ -63,11 +68,13 @@ angular.module('columbia2App')
       {
         displayName: 'Группы',
         field: 'groups',
-        cellFilter: 'GroupsFilter'
+        cellFilter: 'GroupsFilter',
+        enableCellEdit: false
       },
       {
         displayName: 'Репродуктивность',
-        field: 'reproduction'
+        field: 'reproduction',
+        enableCellEdit: false
       }
     ];
 
@@ -282,29 +289,29 @@ angular.module('columbia2App')
     };
 
     $scope.onEditBtnClick = function () {
-      if ($scope.selectedCow.sex === 'М') {
-        var modalInstance = $uibModal.open({
-          templateUrl: 'app/main/formlyDlg.html',
-          controller: 'formlyDlgCtrl',
-          size: 'lg',
-          resolve: {
-            animal: function () {
-              return $scope.selectedCow;
-            },
-            operation: function () {
-              return 'редактирование';
-            }
-          },
-          windowClass: 'modal-primary'
-        });
-
-        modalInstance.result.then(function (cow) {
-          //log($scope.selectedCow);
-          //log(cow);
-          $http.put('/api/things/' + $scope.selectedCow._id, cow);
-        });
-      }
-      else {
+      //if ($scope.selectedCow.sex === 'М') {
+      //  var modalInstance = $uibModal.open({
+      //    templateUrl: 'app/main/formlyDlg.html',
+      //    controller: 'formlyDlgCtrl',
+      //    size: 'lg',
+      //    resolve: {
+      //      animal: function () {
+      //        return $scope.selectedCow;
+      //      },
+      //      operation: function () {
+      //        return 'редактирование';
+      //      }
+      //    },
+      //    windowClass: 'modal-primary'
+      //  });
+      //
+      //  modalInstance.result.then(function (cow) {
+      //    //log($scope.selectedCow);
+      //    //log(cow);
+      //    $http.put('/api/things/' + $scope.selectedCow._id, cow);
+      //  });
+      //}
+      //else {
         var modalInstance = $uibModal.open({
           templateUrl: 'app/main/animalInfoDlg.html',
           controller: 'animalInfoDlgCtrl',
@@ -325,7 +332,7 @@ angular.module('columbia2App')
           //log(cow);
           $http.put('/api/things/' + $scope.selectedCow._id, cow);
         });
-      }
+      //}
     };
 
     $scope.$on('$destroy', function () {
