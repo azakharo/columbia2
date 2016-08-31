@@ -1,7 +1,8 @@
-'use strict';
-
+///////////////////////////////////////////////////////////
 // IMPORTANT!
-// This file MUST BE in sync with its server's version!!!
+// This file lives in the common folder. It must be updated only there!
+// After update it must be copied to both client and server (see copy_common script at the project root).
+
 var SEX = ['М', 'Ж'];
 var PORODY = ['молочная', 'мясная'];
 var CHIP_LOCATIONS = ['спина', 'живот', 'голова'];

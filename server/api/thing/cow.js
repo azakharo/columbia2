@@ -1,16 +1,12 @@
-'use strict';
-
 var _ = require('lodash');
 var moment = require('moment');
 
+var fs = require('fs');
 
-const SEX = ['М', 'Ж'];
-const PORODY = ['молочная', 'мясная'];
-const CHIP_LOCATIONS = ['спина', 'живот', 'голова'];
-const HAIRS = ['черный', 'белый', 'черно-белый'];
+// file is included here:
+eval(fs.readFileSync(__dirname + '/animal.js')+'');
+
 const SPEC_CHARS = [undefined, 'отсутствует глаз', 'отсутствует хвост'];
-const REPRODUCTION_CHOICES = ['нестерилизовано', 'стерилизовано'];
-const GROUPS = ['коровы', 'нетели', 'телки до 2-х лет', 'молодняк'];
 
 exports.createRandomAnimal = function () {
   const birthday = moment().subtract(_.random(1000), 'days');
