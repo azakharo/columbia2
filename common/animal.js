@@ -2,6 +2,8 @@
 // IMPORTANT!
 // This file lives in the common folder. It must be updated only there!
 // After update it must be copied to both client and server (see copy_common script at the project root).
+//
+// Also note that this file must be ES5 compatible, don't use ES6 here.
 
 var SEX = ['М', 'Ж'];
 var PORODY = ['молочная', 'мясная'];
