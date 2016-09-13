@@ -232,10 +232,13 @@ angular.module('columbia2App')
     //////////////////////////////////////////////////////////////////////
     // Operations with cows on server
 
+    $scope.isLoading = true;
     $http.get('/api/things').success(function (awesomeThings) {
       $scope.gridOptions.data = awesomeThings;
       socket.syncUpdates('thing', $scope.gridOptions.data);
       restoreGridState();
+    }).finally(function () {
+      $scope.isLoading = false;
     });
 
     function createDefaultAnimal() {

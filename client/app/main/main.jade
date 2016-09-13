@@ -21,6 +21,10 @@
               i.glyphicon.glyphicon-search
     #animal-table.w100(ui-grid="gridOptions", ui-grid-auto-resize, ui-grid-selection,
     ui-grid-resize-columns, ui-grid-move-columns, ui-grid-save-state, ui-grid-pagination, ui-grid-edit)
+      .grid-msg-overlay(ng-hide='!isLoading')
+        .msg
+          span Loading data...&nbsp;
+            i.fa.fa-spinner.fa-spin
     #animal-table-bottom-bar.ptb1
       // Add button
       button.btn.btn-success.mr1(ng-click="onAddBtnClick()") Добавить...
