@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('columbia2App')
-  .controller('MainCtrl', function ($scope, $http, $uibModal, socket, uiGridConstants, localStorageService, Modal) {
+  .controller('MainCtrl', function ($scope, $http, $uibModal, socket, uiGridConstants,
+                                    uiGridExporterService, uiGridExporterConstants,
+                                    localStorageService, Modal) {
 
     $scope.$on('$destroy', function () {
       saveGridState();
@@ -224,6 +226,72 @@ angular.module('columbia2App')
 
     // grid menu
     $scope.gridOptions.enableGridMenu = true;
+
+
+    //*****************************************************
+    // Export to XLS
+
+    $scope.exportXLSX = function() {
+      var data = [
+        [] // header row
+      ];
+
+      var rows = uiGridExporterService.getData($scope.gridApi.grid, uiGridExporterConstants.VISIBLE, uiGridExporterConstants.VISIBLE);
+
+      var sheet = {};
+
+      $scope.gridApi.grid.columns.forEach(function (col, i) {
+        if (col.visible) {
+          var loc = XLSX.utils.encode_cell({r: 0, c: i});
+
+          sheet[loc] = {
+            v: col.displayName
+          };
+        }
+      });
+
+      var endLoc;
+      rows.forEach(function (row, ri) {
+        ri +=1;
+
+        $scope.gridApi.grid.columns.forEach(function (col, ci) {
+          if(row[ci]) {
+            var loc = XLSX.utils.encode_cell({r: ri, c: ci});
+            
+            sheet[loc] = {
+              v: row[ci].value,
+              t: 's'
+            };
+
+            endLoc = loc;
+          }
+        });
+      });
+
+      sheet['!ref'] = XLSX.utils.encode_range({ s: 'A1', e: endLoc });
+
+      var workbook = {
+        SheetNames: ['Sheet1'],
+        Sheets: {
+          Sheet1: sheet
+        }
+      };
+
+      var wopts = { bookType: 'xlsx', bookSST: false, type: 'binary' };
+      var wbout = XLSX.write(workbook, wopts);
+
+      saveAs(new Blob([s2ab(wbout)], {type: ""}), "test.xlsx");
+    };
+
+    function s2ab(s) {
+      var buf = new ArrayBuffer(s.length);
+      var view = new Uint8Array(buf);
+      for (var i=0; i!=s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+      return buf;
+    }
+
+    // Export to XLS
+    //*****************************************************
 
     // ui-grid setup
     //---------------------------------------------------------------

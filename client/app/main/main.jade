@@ -10,6 +10,7 @@
     #animal-table-top-bar.pb1
       // Title
       #animal-page-title.text-xlarge.bold Животные
+      button#export-xls-btn.btn.btn-success(ng-click='exportXLSX()') Export as XLSX
       // Search Input
       #animal-search-sect
         p.input-group
@@ -20,7 +21,8 @@
             button.btn.btn-default(type='button', ng-click='onSearchBtnClick()')
               i.glyphicon.glyphicon-search
     #animal-table.w100(ui-grid="gridOptions", ui-grid-auto-resize, ui-grid-selection,
-    ui-grid-resize-columns, ui-grid-move-columns, ui-grid-save-state, ui-grid-pagination, ui-grid-edit)
+    ui-grid-resize-columns, ui-grid-move-columns, ui-grid-save-state, ui-grid-pagination,
+    ui-grid-edit, ui-grid-exporter)
       // isLoading indicator
       .grid-msg-overlay(ng-hide='!isLoading')
         .msg
