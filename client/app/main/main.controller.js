@@ -257,9 +257,14 @@ angular.module('columbia2App')
         $scope.gridApi.grid.columns.forEach(function (col, ci) {
           if(row[ci]) {
             var loc = XLSX.utils.encode_cell({r: ri, c: ci});
-            
+
+            var val = row[ci].value;
+            if (val instanceof Date) {
+              val = moment(val).format('DD.MM.YYYY');
+            }
+
             sheet[loc] = {
-              v: row[ci].value,
+              v: val,
               t: 's'
             };
 
