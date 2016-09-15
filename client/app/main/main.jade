@@ -9,8 +9,9 @@
   #page-content.ptb1.plr3
     #animal-table-top-bar.pb1
       // Title
-      #animal-page-title.text-xlarge.bold Животные
-      button#export-xls-btn.btn.btn-success(ng-click='exportXLSX()') Export as XLSX
+      #animal-page-title.mr5.text-xlarge.bold Животные
+      #export-btn-wrapper
+        button.btn.btn-success(ng-click='exportXLSX()') Export as XLSX
       // Search Input
       #animal-search-sect
         p.input-group
