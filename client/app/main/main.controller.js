@@ -227,6 +227,9 @@ angular.module('columbia2App')
     // grid menu
     $scope.gridOptions.enableGridMenu = true;
 
+    // Disable CSV, PDF exporting
+    $scope.gridOptions.exporterMenuPdf = false;
+    $scope.gridOptions.exporterMenuCsv = false;
 
     //*****************************************************
     // Export to XLS
